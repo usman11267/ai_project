@@ -11,7 +11,7 @@ function App() {
   const [step, setStep] = useState(1); // 1: Form, 2: Clarification, 3: Prescription
   const [patientData, setPatientData] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState('');
-  const [clarificationResponses, setClarificationResponses] = useState({});
+  const [sessionId, setSessionId] = useState(null);
   const [prescription, setPrescription] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -20,44 +20,65 @@ function App() {
     setLoading(true);
     
     try {
-      // For simplicity in this MVP, we'll skip the clarification step and go directly to prescription
-      const response = await axios.post('http://localhost:8000/get_prescription/', {
+      // Start a new session with the backend
+      const response = await axios.post('http://localhost:8000/start_session/', {
         patient_name: data.name,
         patient_age: parseInt(data.age),
         symptoms: data.symptoms.split(',').map(s => s.trim())
       });
       
-      setPrescription(response.data.prescription);
       setLoading(false);
-      setStep(3); // Go directly to prescription step
+      
+      if (response.data.status === 'needs_clarification') {
+        // We need to ask a clarification question
+        setSessionId(response.data.session_id);
+        setCurrentQuestion(response.data.question);
+        setStep(2); // Go to clarification step
+      } else if (response.data.status === 'complete') {
+        // We have a prescription already
+        setPrescription(response.data.prescription);
+        setStep(3); // Go to prescription step
+      }
     } catch (error) {
-      console.error('Error fetching prescription:', error);
+      console.error('Error starting session:', error);
       setLoading(false);
-      alert('Failed to get prescription. Please try again.');
+      alert('Failed to start consultation. Please try again.');
     }
   };
 
-  const handleClarificationSubmit = (answer) => {
-    setClarificationResponses({
-      ...clarificationResponses,
-      [currentQuestion]: answer
-    });
-    
-    // In a real implementation, we would send this answer back to the API
-    // For now, we'll just simulate moving to the prescription step
+  const handleClarificationSubmit = async (answer) => {
     setLoading(true);
-    setTimeout(() => {
-      setPrescription("Sample prescription based on your symptoms...");
+    
+    try {
+      // Send the answer to the backend
+      const response = await axios.post('http://localhost:8000/answer_question/', {
+        session_id: sessionId,
+        answer: answer
+      });
+      
       setLoading(false);
-      setStep(3);
-    }, 1500);
+      
+      if (response.data.status === 'needs_clarification') {
+        // We need to ask another clarification question
+        setCurrentQuestion(response.data.question);
+        // Stay on clarification step
+      } else if (response.data.status === 'complete') {
+        // We have a prescription
+        setPrescription(response.data.prescription);
+        setStep(3); // Go to prescription step
+      }
+    } catch (error) {
+      console.error('Error submitting answer:', error);
+      setLoading(false);
+      alert('Failed to process your answer. Please try again.');
+    }
   };
 
   const resetApp = () => {
     setStep(1);
     setPatientData(null);
     setCurrentQuestion('');
-    setClarificationResponses({});
+    setSessionId(null);
     setPrescription('');
   };
 
