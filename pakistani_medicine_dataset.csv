@@ -1,0 +1,1001 @@
+Symptom,Medicine_Name,Medicine_Type,Common_Side_Effects,Prescription_Required
+Vomiting,Stemetil,Injection,None,Yes
+Constipation,Duphalac,Lozenge,Nausea,No
+Pain,Ketorolac,Syrup,Dizziness,No
+Infection,Ciprofloxacin,Tablet,Stomach upset,No
+Flu,Flutab,Syrup,Drowsiness,Yes
+Diarrhea,Imodium,Tablet,Dizziness,Yes
+Diarrhea,Econorm,Cream,Metallic taste,Yes
+Allergy,Cetrizine,Capsule,Nausea,No
+Allergy,Loratadine,Capsule,Nausea,Yes
+Cough,Benylin,Tablet,Nausea,No
+High Blood Pressure,Losartan,Injection,Minor irritation,No
+Fever,Disprol,Cream,Nausea,No
+Skin Rash,Betnovate,Syrup,None,No
+Sore Throat,Strepsils,Capsule,Minor irritation,Yes
+Nausea,Domperidone,Tablet,None,Yes
+Headache,Synflex,Tablet,None,No
+Allergy,Benadryl,Syrup,Drowsiness,No
+High Blood Pressure,Lisinopril,Tablet,Nausea,Yes
+Skin Rash,Betnovate,Injection,Dizziness,No
+Infection,Augmentin,Tablet,Drowsiness,No
+Vomiting,Domperidone,Syrup,Dizziness,No
+Sore Throat,Strepsils,Cream,Nausea,Yes
+Back Pain,Nuberol Forte,Syrup,Stomach upset,No
+Vomiting,Zofran,Capsule,Nausea,No
+Flu,Contac,Cream,Drowsiness,Yes
+Acidity,Omeprazole,Cream,Nausea,No
+Flu,Contac,Tablet,Drowsiness,Yes
+Cough,Benylin,Syrup,Metallic taste,No
+Skin Rash,Betnovate,Tablet,Drowsiness,Yes
+Skin Rash,Fucidin,Capsule,Nausea,No
+Sore Throat,Cepacol,Capsule,Minor irritation,No
+Back Pain,Ibuprofen,Injection,Stomach upset,No
+Flu,Flutab,Tablet,Metallic taste,No
+Sore Throat,Lemzinc,Injection,None,Yes
+Infection,Ciprofloxacin,Capsule,Drowsiness,No
+Infection,Augmentin,Lozenge,None,No
+Pain,Brufen,Capsule,Drowsiness,No
+Nausea,Emetrol,Lozenge,Metallic taste,No
+Sore Throat,Cepacol,Injection,Nausea,Yes
+Cough,Corex,Lozenge,None,No
+Diarrhea,Econorm,Tablet,Nausea,Yes
+Constipation,Duphalac,Lozenge,Nausea,No
+Cold,NeoCitran,Cream,Drowsiness,No
+Cough,Benylin,Cream,None,Yes
+Cough,Corex,Syrup,Dizziness,No
+Joint Pain,Arcoxia,Lozenge,None,No
+High Blood Pressure,Lisinopril,Tablet,Minor irritation,Yes
+Skin Rash,Betnovate,Injection,Nausea,Yes
+Sore Throat,Lemzinc,Injection,Minor irritation,Yes
+Infection,Augmentin,Lozenge,Drowsiness,Yes
+Headache,Synflex,Lozenge,Drowsiness,Yes
+Allergy,Cetrizine,Lozenge,Minor irritation,No
+Flu,Contac,Cream,Stomach upset,Yes
+Headache,Synflex,Injection,Minor irritation,Yes
+Back Pain,Orudis,Injection,None,Yes
+Flu,Flutab,Syrup,Dizziness,Yes
+Acidity,Omeprazole,Syrup,Minor irritation,Yes
+Acidity,Omeprazole,Tablet,Drowsiness,Yes
+Vomiting,Domperidone,Syrup,Stomach upset,No
+Skin Rash,Betnovate,Lozenge,Drowsiness,Yes
+Pain,Ketorolac,Lozenge,Dizziness,No
+High Blood Pressure,Losartan,Tablet,Minor irritation,Yes
+Fever,Calpol,Cream,Stomach upset,No
+Skin Rash,Hydrocortisone,Injection,None,No
+Acidity,Gaviscon,Cream,Stomach upset,No
+Joint Pain,Arcoxia,Cream,Nausea,No
+Constipation,Duphalac,Tablet,Minor irritation,No
+Back Pain,Nuberol Forte,Lozenge,Drowsiness,No
+Allergy,Benadryl,Syrup,Stomach upset,Yes
+Infection,Amoxicillin,Tablet,Dizziness,No
+Allergy,Cetrizine,Cream,None,Yes
+Headache,Synflex,Lozenge,Dizziness,Yes
+Cough,Corex,Capsule,Drowsiness,No
+Joint Pain,Celebrex,Cream,None,Yes
+Back Pain,Ibuprofen,Capsule,Minor irritation,No
+Diabetes,Glibenclamide,Lozenge,Dizziness,No
+Allergy,Loratadine,Lozenge,Drowsiness,Yes
+High Blood Pressure,Lisinopril,Cream,Drowsiness,No
+Diarrhea,Econorm,Syrup,Nausea,Yes
+Allergy,Cetrizine,Tablet,Dizziness,Yes
+Infection,Augmentin,Tablet,Metallic taste,Yes
+Cold,NeoCitran,Tablet,Metallic taste,Yes
+Infection,Augmentin,Injection,Drowsiness,Yes
+Cold,Dispirin,Lozenge,Stomach upset,Yes
+Diarrhea,Econorm,Cream,Nausea,Yes
+Nausea,Gravinate,Syrup,Minor irritation,No
+Cough,Benylin,Tablet,None,No
+Nausea,Gravinate,Lozenge,Nausea,Yes
+Pain,Ketorolac,Syrup,Dizziness,Yes
+Infection,Augmentin,Tablet,Stomach upset,No
+Back Pain,Orudis,Tablet,Metallic taste,No
+Skin Rash,Hydrocortisone,Cream,Drowsiness,No
+Headache,Saridon,Cream,Minor irritation,Yes
+Flu,Flutab,Lozenge,Stomach upset,Yes
+Headache,Panadol Extra,Cream,Stomach upset,No
+High Blood Pressure,Losartan,Tablet,Stomach upset,No
+Cold,Sudafed,Cream,Dizziness,No
+Skin Rash,Hydrocortisone,Lozenge,Dizziness,No
+Acidity,Risek,Injection,None,Yes
+Acidity,Omeprazole,Syrup,Metallic taste,Yes
+Joint Pain,Celebrex,Syrup,Metallic taste,Yes
+Nausea,Gravinate,Capsule,Dizziness,No
+Nausea,Gravinate,Lozenge,Nausea,Yes
+Flu,Flutab,Injection,Dizziness,No
+Diarrhea,Econorm,Injection,None,No
+Allergy,Loratadine,Injection,Metallic taste,No
+Flu,Flutab,Cream,Drowsiness,Yes
+Headache,Saridon,Capsule,Nausea,No
+Asthma,Seretide,Cream,Metallic taste,Yes
+Flu,Actifed,Tablet,Nausea,No
+Headache,Saridon,Lozenge,Stomach upset,Yes
+Cold,Dispirin,Syrup,Minor irritation,Yes
+Vomiting,Domperidone,Cream,Drowsiness,Yes
+Headache,Panadol Extra,Capsule,Dizziness,Yes
+Skin Rash,Betnovate,Lozenge,Minor irritation,No
+Diarrhea,Imodium,Syrup,Drowsiness,No
+Constipation,Cremaffin,Syrup,Dizziness,No
+Nausea,Domperidone,Capsule,Stomach upset,Yes
+Nausea,Domperidone,Capsule,Metallic taste,Yes
+Back Pain,Ibuprofen,Lozenge,Dizziness,Yes
+Nausea,Domperidone,Syrup,Drowsiness,Yes
+Nausea,Emetrol,Syrup,Nausea,Yes
+Joint Pain,Arcoxia,Lozenge,Dizziness,Yes
+Diarrhea,Imodium,Syrup,Drowsiness,No
+Infection,Amoxicillin,Tablet,Drowsiness,Yes
+Skin Rash,Fucidin,Cream,Dizziness,Yes
+Skin Rash,Hydrocortisone,Lozenge,Stomach upset,No
+Allergy,Loratadine,Syrup,Minor irritation,No
+High Blood Pressure,Losartan,Syrup,Metallic taste,No
+Allergy,Loratadine,Tablet,Drowsiness,Yes
+Back Pain,Ibuprofen,Injection,Nausea,No
+Skin Rash,Betnovate,Tablet,Dizziness,Yes
+Asthma,Symbicort,Cream,Nausea,No
+Vomiting,Zofran,Syrup,Metallic taste,No
+High Blood Pressure,Amlodipine,Cream,Metallic taste,Yes
+Asthma,Seretide,Injection,Drowsiness,Yes
+Joint Pain,Arcoxia,Cream,Metallic taste,No
+High Blood Pressure,Lisinopril,Syrup,Dizziness,Yes
+Skin Rash,Fucidin,Tablet,Nausea,No
+Fever,Calpol,Cream,Dizziness,No
+Nausea,Domperidone,Capsule,Metallic taste,No
+Sore Throat,Strepsils,Tablet,None,No
+Vomiting,Domperidone,Lozenge,Dizziness,No
+High Blood Pressure,Lisinopril,Tablet,Minor irritation,Yes
+Skin Rash,Fucidin,Lozenge,Metallic taste,Yes
+Acidity,Omeprazole,Tablet,Dizziness,No
+Back Pain,Nuberol Forte,Capsule,Drowsiness,Yes
+Back Pain,Ibuprofen,Syrup,Dizziness,Yes
+Nausea,Emetrol,Lozenge,Minor irritation,No
+High Blood Pressure,Losartan,Injection,Minor irritation,No
+Flu,Contac,Injection,Dizziness,Yes
+Joint Pain,Celebrex,Syrup,Drowsiness,Yes
+Nausea,Gravinate,Syrup,None,No
+Skin Rash,Fucidin,Injection,Minor irritation,Yes
+Constipation,Cremaffin,Lozenge,Stomach upset,Yes
+Fever,Disprol,Lozenge,Drowsiness,No
+Cough,Benylin,Capsule,Nausea,Yes
+Diabetes,Metformin,Tablet,Dizziness,No
+Asthma,Symbicort,Lozenge,Drowsiness,No
+Back Pain,Ibuprofen,Lozenge,Nausea,Yes
+Pain,Ketorolac,Lozenge,None,No
+Allergy,Benadryl,Lozenge,None,Yes
+Nausea,Domperidone,Tablet,Metallic taste,No
+Skin Rash,Fucidin,Injection,Minor irritation,Yes
+Pain,Brufen,Tablet,Dizziness,Yes
+Nausea,Emetrol,Capsule,Dizziness,Yes
+Infection,Amoxicillin,Syrup,Stomach upset,No
+Diabetes,Glibenclamide,Tablet,Minor irritation,No
+Vomiting,Domperidone,Capsule,None,No
+Nausea,Emetrol,Cream,Drowsiness,No
+Asthma,Seretide,Lozenge,Minor irritation,No
+Constipation,Cremaffin,Syrup,Metallic taste,Yes
+High Blood Pressure,Losartan,Capsule,Metallic taste,Yes
+Pain,Ketorolac,Lozenge,Metallic taste,Yes
+Asthma,Ventolin,Injection,Drowsiness,Yes
+Pain,Ponstan,Tablet,Drowsiness,Yes
+Pain,Ketorolac,Cream,None,Yes
+Vomiting,Domperidone,Tablet,Stomach upset,No
+Joint Pain,Celebrex,Injection,Minor irritation,Yes
+Flu,Flutab,Syrup,Stomach upset,Yes
+Back Pain,Orudis,Injection,None,Yes
+Asthma,Seretide,Injection,Nausea,Yes
+Fever,Calpol,Lozenge,Nausea,No
+Headache,Panadol Extra,Cream,Stomach upset,No
+Infection,Amoxicillin,Cream,Minor irritation,No
+High Blood Pressure,Losartan,Tablet,Metallic taste,Yes
+Flu,Actifed,Cream,Metallic taste,No
+Nausea,Gravinate,Tablet,Stomach upset,Yes
+Joint Pain,Arcoxia,Injection,Drowsiness,No
+Nausea,Gravinate,Injection,Stomach upset,Yes
+Asthma,Ventolin,Cream,Dizziness,Yes
+Skin Rash,Hydrocortisone,Lozenge,Nausea,Yes
+Cough,Benylin,Injection,Dizziness,No
+Constipation,Duphalac,Cream,Nausea,No
+Flu,Actifed,Syrup,Drowsiness,No
+Vomiting,Domperidone,Lozenge,Minor irritation,No
+High Blood Pressure,Lisinopril,Capsule,None,Yes
+Asthma,Seretide,Capsule,None,No
+Acidity,Gaviscon,Syrup,Dizziness,No
+Cold,Dispirin,Lozenge,Minor irritation,Yes
+Allergy,Benadryl,Syrup,Drowsiness,Yes
+Back Pain,Nuberol Forte,Syrup,Stomach upset,Yes
+Pain,Brufen,Syrup,None,No
+Acidity,Omeprazole,Capsule,Stomach upset,No
+Pain,Brufen,Tablet,Nausea,Yes
+Acidity,Risek,Injection,None,Yes
+Flu,Flutab,Cream,Stomach upset,Yes
+Back Pain,Orudis,Injection,None,No
+Infection,Ciprofloxacin,Capsule,Minor irritation,No
+Asthma,Ventolin,Capsule,Stomach upset,Yes
+Infection,Amoxicillin,Cream,Nausea,No
+High Blood Pressure,Amlodipine,Tablet,Minor irritation,Yes
+Diabetes,Metformin,Capsule,Stomach upset,Yes
+Joint Pain,Arcoxia,Injection,None,No
+Back Pain,Nuberol Forte,Syrup,Drowsiness,Yes
+Back Pain,Orudis,Syrup,Dizziness,No
+Diabetes,Glibenclamide,Tablet,Stomach upset,Yes
+Infection,Amoxicillin,Cream,Drowsiness,Yes
+Diabetes,Metformin,Tablet,Stomach upset,Yes
+Vomiting,Zofran,Lozenge,Nausea,Yes
+Fever,Calpol,Injection,Stomach upset,No
+Back Pain,Orudis,Syrup,Stomach upset,No
+High Blood Pressure,Amlodipine,Tablet,Minor irritation,Yes
+Cough,Benylin,Cream,Drowsiness,No
+Constipation,Duphalac,Lozenge,None,Yes
+Infection,Amoxicillin,Syrup,Stomach upset,No
+Acidity,Omeprazole,Capsule,Dizziness,No
+Skin Rash,Betnovate,Cream,Stomach upset,Yes
+Vomiting,Domperidone,Cream,Minor irritation,Yes
+Diarrhea,Imodium,Lozenge,Stomach upset,Yes
+Fever,Panadol,Syrup,Minor irritation,Yes
+Diarrhea,Flagyl,Syrup,Metallic taste,Yes
+Fever,Disprol,Lozenge,Metallic taste,Yes
+Acidity,Risek,Capsule,Minor irritation,No
+Nausea,Emetrol,Tablet,Metallic taste,Yes
+High Blood Pressure,Losartan,Capsule,Nausea,No
+Acidity,Risek,Syrup,Minor irritation,Yes
+Vomiting,Stemetil,Capsule,Metallic taste,No
+Skin Rash,Hydrocortisone,Cream,Dizziness,Yes
+Vomiting,Domperidone,Lozenge,Drowsiness,No
+Sore Throat,Lemzinc,Syrup,Nausea,No
+Diarrhea,Econorm,Injection,Metallic taste,Yes
+High Blood Pressure,Lisinopril,Tablet,Dizziness,No
+Cough,Corex,Cream,Dizziness,No
+Constipation,Lactulose,Lozenge,Minor irritation,No
+Allergy,Benadryl,Cream,Nausea,Yes
+Diarrhea,Imodium,Lozenge,Minor irritation,Yes
+High Blood Pressure,Losartan,Tablet,Drowsiness,Yes
+Flu,Actifed,Syrup,Dizziness,Yes
+Acidity,Risek,Lozenge,Dizziness,No
+High Blood Pressure,Lisinopril,Tablet,None,No
+Joint Pain,Voltral,Syrup,Minor irritation,No
+Diarrhea,Imodium,Tablet,Drowsiness,No
+Vomiting,Stemetil,Injection,Minor irritation,No
+Skin Rash,Fucidin,Syrup,Minor irritation,Yes
+Diabetes,Glibenclamide,Cream,None,Yes
+Cough,Benylin,Capsule,Metallic taste,Yes
+Acidity,Gaviscon,Cream,Stomach upset,No
+Acidity,Gaviscon,Cream,Nausea,Yes
+Flu,Flutab,Tablet,Minor irritation,Yes
+High Blood Pressure,Amlodipine,Injection,None,Yes
+Cold,Sudafed,Injection,Nausea,No
+Cold,Sudafed,Injection,Metallic taste,No
+Diarrhea,Flagyl,Cream,Drowsiness,No
+Constipation,Cremaffin,Capsule,Minor irritation,No
+Skin Rash,Hydrocortisone,Capsule,Nausea,No
+Asthma,Seretide,Cream,Nausea,No
+Asthma,Seretide,Injection,None,Yes
+High Blood Pressure,Losartan,Lozenge,Metallic taste,No
+High Blood Pressure,Amlodipine,Cream,Dizziness,No
+Constipation,Cremaffin,Lozenge,Stomach upset,Yes
+Diarrhea,Econorm,Tablet,Nausea,Yes
+Skin Rash,Hydrocortisone,Cream,Metallic taste,No
+Nausea,Gravinate,Cream,Drowsiness,Yes
+Allergy,Cetrizine,Syrup,Drowsiness,Yes
+Cough,Benylin,Cream,Stomach upset,No
+Allergy,Cetrizine,Syrup,Stomach upset,No
+Fever,Disprol,Tablet,Minor irritation,Yes
+Headache,Synflex,Syrup,Minor irritation,No
+Acidity,Gaviscon,Syrup,Minor irritation,No
+Skin Rash,Fucidin,Tablet,Minor irritation,Yes
+Acidity,Omeprazole,Syrup,Nausea,No
+Infection,Amoxicillin,Lozenge,Nausea,No
+Asthma,Seretide,Tablet,Drowsiness,Yes
+Flu,Actifed,Syrup,Stomach upset,Yes
+Back Pain,Ibuprofen,Capsule,None,No
+Asthma,Seretide,Injection,Dizziness,No
+Diarrhea,Imodium,Cream,None,No
+Infection,Augmentin,Syrup,None,No
+High Blood Pressure,Losartan,Injection,Dizziness,Yes
+Infection,Ciprofloxacin,Lozenge,Metallic taste,No
+Joint Pain,Arcoxia,Tablet,Drowsiness,Yes
+Infection,Ciprofloxacin,Tablet,Nausea,Yes
+Fever,Panadol,Injection,Drowsiness,No
+Asthma,Ventolin,Cream,Drowsiness,No
+Diarrhea,Imodium,Lozenge,Dizziness,Yes
+Constipation,Cremaffin,Tablet,Minor irritation,Yes
+Allergy,Cetrizine,Lozenge,Stomach upset,No
+Infection,Amoxicillin,Cream,Drowsiness,No
+Asthma,Symbicort,Cream,Nausea,No
+Headache,Saridon,Tablet,Metallic taste,No
+Infection,Ciprofloxacin,Tablet,Stomach upset,Yes
+High Blood Pressure,Losartan,Lozenge,Drowsiness,No
+Pain,Brufen,Injection,Minor irritation,No
+Flu,Actifed,Injection,Dizziness,No
+Allergy,Loratadine,Capsule,Minor irritation,No
+Infection,Ciprofloxacin,Capsule,Metallic taste,Yes
+Sore Throat,Lemzinc,Injection,Minor irritation,No
+Nausea,Domperidone,Injection,Drowsiness,No
+Asthma,Seretide,Cream,Drowsiness,No
+Infection,Amoxicillin,Tablet,Minor irritation,Yes
+Cold,Dispirin,Syrup,Minor irritation,No
+Back Pain,Orudis,Capsule,Nausea,Yes
+Vomiting,Stemetil,Cream,Metallic taste,Yes
+Joint Pain,Celebrex,Cream,Minor irritation,No
+Sore Throat,Lemzinc,Cream,Dizziness,Yes
+Asthma,Symbicort,Lozenge,Metallic taste,Yes
+Infection,Amoxicillin,Lozenge,Drowsiness,Yes
+Cough,Benylin,Tablet,Stomach upset,No
+Asthma,Symbicort,Capsule,None,Yes
+Vomiting,Domperidone,Injection,Metallic taste,Yes
+Pain,Ponstan,Injection,Dizziness,Yes
+Cough,Corex,Tablet,Dizziness,Yes
+Constipation,Duphalac,Tablet,Metallic taste,Yes
+Nausea,Domperidone,Lozenge,Stomach upset,No
+Asthma,Seretide,Injection,Stomach upset,No
+Diarrhea,Flagyl,Lozenge,Stomach upset,Yes
+Flu,Contac,Lozenge,Drowsiness,Yes
+Cough,Corex,Syrup,None,No
+Flu,Flutab,Syrup,Drowsiness,No
+Flu,Contac,Syrup,Dizziness,Yes
+Diabetes,Glibenclamide,Tablet,Drowsiness,No
+Sore Throat,Cepacol,Syrup,Metallic taste,No
+Cough,Tixylix,Syrup,Minor irritation,No
+Pain,Brufen,Injection,Stomach upset,No
+Headache,Panadol Extra,Syrup,Stomach upset,No
+Back Pain,Ibuprofen,Cream,Minor irritation,No
+Diarrhea,Imodium,Lozenge,None,Yes
+Constipation,Duphalac,Capsule,Minor irritation,Yes
+Vomiting,Stemetil,Capsule,Metallic taste,No
+Sore Throat,Lemzinc,Cream,Nausea,No
+Flu,Contac,Lozenge,None,No
+Nausea,Domperidone,Lozenge,Metallic taste,No
+Diarrhea,Imodium,Capsule,None,Yes
+Fever,Calpol,Syrup,None,No
+Skin Rash,Fucidin,Syrup,Stomach upset,Yes
+Headache,Saridon,Syrup,Stomach upset,No
+Skin Rash,Betnovate,Cream,Metallic taste,Yes
+Acidity,Risek,Cream,Dizziness,Yes
+Infection,Amoxicillin,Cream,Nausea,No
+Skin Rash,Hydrocortisone,Cream,Dizziness,No
+High Blood Pressure,Losartan,Tablet,Nausea,No
+Diabetes,Glibenclamide,Capsule,Drowsiness,No
+Constipation,Lactulose,Tablet,Stomach upset,Yes
+Headache,Panadol Extra,Lozenge,Stomach upset,No
+Back Pain,Orudis,Tablet,Metallic taste,No
+High Blood Pressure,Amlodipine,Tablet,Nausea,No
+Fever,Calpol,Injection,Dizziness,No
+Fever,Panadol,Tablet,Drowsiness,No
+Skin Rash,Betnovate,Cream,Metallic taste,Yes
+Sore Throat,Lemzinc,Cream,Stomach upset,No
+Headache,Synflex,Capsule,Drowsiness,Yes
+Skin Rash,Fucidin,Capsule,None,Yes
+Joint Pain,Voltral,Tablet,Dizziness,Yes
+Skin Rash,Fucidin,Capsule,Nausea,Yes
+Asthma,Symbicort,Tablet,Drowsiness,No
+Headache,Saridon,Cream,Stomach upset,Yes
+Vomiting,Domperidone,Cream,Drowsiness,Yes
+Sore Throat,Cepacol,Capsule,Nausea,No
+Back Pain,Ibuprofen,Tablet,Nausea,Yes
+Fever,Calpol,Cream,Minor irritation,Yes
+Fever,Calpol,Injection,Minor irritation,Yes
+Headache,Synflex,Capsule,Nausea,Yes
+Nausea,Gravinate,Injection,Minor irritation,No
+Diabetes,Glibenclamide,Injection,Drowsiness,No
+Back Pain,Nuberol Forte,Injection,Stomach upset,Yes
+Diarrhea,Imodium,Tablet,Nausea,No
+Diarrhea,Imodium,Cream,Stomach upset,No
+Back Pain,Ibuprofen,Syrup,None,Yes
+Back Pain,Orudis,Cream,Dizziness,No
+Headache,Synflex,Syrup,Stomach upset,Yes
+Infection,Amoxicillin,Cream,Metallic taste,No
+Asthma,Symbicort,Cream,None,Yes
+Sore Throat,Strepsils,Injection,Drowsiness,Yes
+Infection,Augmentin,Injection,Stomach upset,Yes
+Diarrhea,Econorm,Cream,Minor irritation,No
+Diarrhea,Imodium,Capsule,Dizziness,Yes
+Asthma,Seretide,Tablet,Minor irritation,No
+Skin Rash,Hydrocortisone,Tablet,Stomach upset,Yes
+Headache,Saridon,Capsule,Stomach upset,Yes
+High Blood Pressure,Amlodipine,Tablet,Drowsiness,No
+Fever,Disprol,Cream,Stomach upset,No
+Pain,Ketorolac,Lozenge,Metallic taste,No
+Back Pain,Ibuprofen,Capsule,Nausea,No
+Nausea,Gravinate,Syrup,None,Yes
+Skin Rash,Betnovate,Cream,Drowsiness,Yes
+Joint Pain,Celebrex,Lozenge,None,No
+Back Pain,Nuberol Forte,Capsule,Stomach upset,No
+Cough,Benylin,Tablet,Nausea,No
+Skin Rash,Fucidin,Cream,Minor irritation,No
+Fever,Calpol,Lozenge,Drowsiness,No
+Back Pain,Nuberol Forte,Syrup,None,No
+Diabetes,Glibenclamide,Capsule,None,No
+Fever,Panadol,Injection,Minor irritation,No
+Infection,Augmentin,Tablet,Stomach upset,No
+Skin Rash,Hydrocortisone,Capsule,Drowsiness,Yes
+Flu,Actifed,Lozenge,Nausea,No
+Diarrhea,Flagyl,Cream,Nausea,Yes
+Diarrhea,Imodium,Injection,Minor irritation,Yes
+High Blood Pressure,Lisinopril,Injection,Stomach upset,Yes
+Vomiting,Stemetil,Cream,Metallic taste,Yes
+Pain,Brufen,Cream,Stomach upset,No
+Fever,Calpol,Syrup,Stomach upset,Yes
+High Blood Pressure,Amlodipine,Capsule,Nausea,No
+Constipation,Lactulose,Lozenge,Drowsiness,No
+High Blood Pressure,Lisinopril,Lozenge,Dizziness,Yes
+Pain,Ponstan,Tablet,Metallic taste,No
+Diabetes,Metformin,Tablet,Drowsiness,Yes
+Headache,Saridon,Tablet,None,No
+Fever,Disprol,Syrup,Metallic taste,Yes
+Back Pain,Nuberol Forte,Syrup,Drowsiness,Yes
+Cold,NeoCitran,Injection,Dizziness,Yes
+Asthma,Ventolin,Lozenge,Metallic taste,No
+Constipation,Duphalac,Capsule,Stomach upset,Yes
+Allergy,Cetrizine,Cream,Drowsiness,Yes
+Joint Pain,Voltral,Injection,Nausea,No
+Cold,Dispirin,Syrup,Stomach upset,Yes
+Allergy,Cetrizine,Injection,None,Yes
+Acidity,Omeprazole,Cream,Nausea,Yes
+Skin Rash,Fucidin,Tablet,Dizziness,Yes
+Vomiting,Zofran,Tablet,Minor irritation,Yes
+Sore Throat,Cepacol,Cream,Metallic taste,Yes
+Nausea,Emetrol,Cream,Nausea,Yes
+Fever,Panadol,Cream,Metallic taste,No
+Sore Throat,Cepacol,Cream,Nausea,Yes
+Vomiting,Domperidone,Cream,Stomach upset,No
+Constipation,Lactulose,Syrup,Dizziness,Yes
+Vomiting,Domperidone,Tablet,Nausea,Yes
+Acidity,Risek,Cream,None,No
+Skin Rash,Fucidin,Tablet,Drowsiness,Yes
+Skin Rash,Betnovate,Cream,Dizziness,Yes
+Acidity,Omeprazole,Capsule,Minor irritation,No
+Cold,NeoCitran,Cream,Minor irritation,Yes
+Asthma,Symbicort,Tablet,Drowsiness,Yes
+Sore Throat,Lemzinc,Injection,Nausea,No
+Cold,Sudafed,Syrup,Stomach upset,Yes
+Vomiting,Stemetil,Lozenge,None,Yes
+High Blood Pressure,Losartan,Tablet,None,Yes
+Nausea,Gravinate,Lozenge,Metallic taste,No
+Fever,Disprol,Tablet,Metallic taste,Yes
+Allergy,Cetrizine,Cream,Dizziness,Yes
+Allergy,Cetrizine,Injection,Dizziness,Yes
+Sore Throat,Strepsils,Syrup,Dizziness,Yes
+Nausea,Gravinate,Injection,Metallic taste,Yes
+Cough,Tixylix,Lozenge,Nausea,Yes
+Back Pain,Nuberol Forte,Capsule,Minor irritation,Yes
+Headache,Synflex,Cream,Stomach upset,No
+Diabetes,Insulin,Injection,Stomach upset,Yes
+Skin Rash,Hydrocortisone,Tablet,Drowsiness,No
+Asthma,Symbicort,Lozenge,Nausea,Yes
+Asthma,Ventolin,Lozenge,Stomach upset,Yes
+Skin Rash,Fucidin,Cream,None,Yes
+Diabetes,Insulin,Capsule,Minor irritation,No
+Cold,Sudafed,Injection,Drowsiness,No
+Cold,Sudafed,Cream,Nausea,No
+Constipation,Cremaffin,Tablet,Dizziness,No
+Nausea,Emetrol,Cream,Nausea,No
+Acidity,Risek,Cream,Minor irritation,Yes
+Back Pain,Ibuprofen,Syrup,Minor irritation,No
+Sore Throat,Cepacol,Syrup,None,Yes
+Constipation,Lactulose,Cream,Drowsiness,Yes
+Diabetes,Glibenclamide,Lozenge,None,No
+Skin Rash,Betnovate,Tablet,Nausea,Yes
+Joint Pain,Celebrex,Tablet,Nausea,No
+Acidity,Gaviscon,Lozenge,Stomach upset,No
+Infection,Augmentin,Syrup,Dizziness,No
+Nausea,Domperidone,Cream,Stomach upset,Yes
+High Blood Pressure,Amlodipine,Lozenge,Stomach upset,No
+Sore Throat,Cepacol,Lozenge,Stomach upset,No
+Cold,Sudafed,Syrup,Dizziness,Yes
+Fever,Calpol,Lozenge,Nausea,Yes
+Allergy,Loratadine,Lozenge,Stomach upset,Yes
+Acidity,Risek,Capsule,Minor irritation,Yes
+Cough,Tixylix,Syrup,None,No
+Sore Throat,Strepsils,Capsule,Metallic taste,No
+Skin Rash,Betnovate,Injection,Minor irritation,No
+Nausea,Domperidone,Injection,Metallic taste,Yes
+Fever,Calpol,Lozenge,Dizziness,Yes
+Infection,Amoxicillin,Lozenge,Dizziness,Yes
+Diarrhea,Flagyl,Tablet,Nausea,No
+Asthma,Seretide,Injection,Drowsiness,No
+Cold,Dispirin,Tablet,Stomach upset,Yes
+Back Pain,Orudis,Tablet,Dizziness,No
+Pain,Ketorolac,Capsule,Dizziness,Yes
+Acidity,Omeprazole,Capsule,Nausea,No
+Sore Throat,Cepacol,Syrup,Nausea,No
+Diarrhea,Flagyl,Lozenge,Dizziness,No
+Joint Pain,Voltral,Tablet,Drowsiness,No
+Infection,Augmentin,Lozenge,Minor irritation,No
+Cough,Corex,Syrup,Minor irritation,No
+Headache,Panadol Extra,Syrup,Nausea,No
+Fever,Disprol,Capsule,Metallic taste,No
+Back Pain,Ibuprofen,Lozenge,None,Yes
+Skin Rash,Betnovate,Injection,Dizziness,Yes
+Joint Pain,Voltral,Syrup,Stomach upset,No
+Back Pain,Ibuprofen,Lozenge,Dizziness,No
+Allergy,Benadryl,Lozenge,Dizziness,No
+Infection,Amoxicillin,Lozenge,Nausea,Yes
+Acidity,Risek,Injection,Drowsiness,Yes
+Acidity,Omeprazole,Syrup,Drowsiness,Yes
+Fever,Disprol,Injection,Metallic taste,Yes
+Constipation,Cremaffin,Cream,Stomach upset,No
+Fever,Disprol,Lozenge,None,No
+Pain,Ponstan,Syrup,Stomach upset,No
+Cough,Corex,Cream,None,Yes
+Diarrhea,Imodium,Syrup,Minor irritation,No
+Flu,Flutab,Tablet,Dizziness,Yes
+Flu,Flutab,Tablet,Nausea,No
+High Blood Pressure,Losartan,Cream,Drowsiness,Yes
+Nausea,Emetrol,Lozenge,None,Yes
+Nausea,Emetrol,Injection,None,No
+Nausea,Domperidone,Capsule,Metallic taste,Yes
+Infection,Ciprofloxacin,Cream,Nausea,Yes
+Acidity,Gaviscon,Injection,None,Yes
+Diarrhea,Flagyl,Lozenge,Drowsiness,No
+Cold,NeoCitran,Injection,Metallic taste,No
+Constipation,Duphalac,Cream,None,No
+Cough,Tixylix,Injection,Metallic taste,No
+Headache,Saridon,Injection,Drowsiness,Yes
+Fever,Disprol,Syrup,Nausea,Yes
+Pain,Ketorolac,Cream,Dizziness,Yes
+Skin Rash,Fucidin,Syrup,Dizziness,Yes
+Allergy,Cetrizine,Tablet,None,Yes
+Infection,Amoxicillin,Cream,Drowsiness,Yes
+Skin Rash,Hydrocortisone,Tablet,None,No
+Diabetes,Glibenclamide,Tablet,Stomach upset,No
+Flu,Contac,Tablet,Stomach upset,Yes
+Back Pain,Ibuprofen,Injection,Minor irritation,No
+Nausea,Emetrol,Tablet,Drowsiness,Yes
+Pain,Brufen,Lozenge,Dizziness,No
+Joint Pain,Celebrex,Tablet,Nausea,Yes
+Headache,Saridon,Syrup,Minor irritation,No
+Diarrhea,Imodium,Capsule,Nausea,No
+Joint Pain,Arcoxia,Capsule,Metallic taste,Yes
+Vomiting,Domperidone,Injection,Minor irritation,Yes
+Diabetes,Insulin,Injection,Stomach upset,No
+Cold,NeoCitran,Capsule,Drowsiness,Yes
+Vomiting,Stemetil,Capsule,Stomach upset,Yes
+Asthma,Ventolin,Lozenge,Metallic taste,Yes
+High Blood Pressure,Losartan,Syrup,Nausea,No
+Allergy,Cetrizine,Cream,Minor irritation,Yes
+Nausea,Emetrol,Cream,Nausea,Yes
+Back Pain,Nuberol Forte,Tablet,Dizziness,Yes
+Flu,Actifed,Tablet,None,Yes
+Acidity,Risek,Injection,None,Yes
+Nausea,Domperidone,Injection,Dizziness,No
+Sore Throat,Lemzinc,Syrup,Stomach upset,No
+Constipation,Cremaffin,Cream,None,No
+High Blood Pressure,Lisinopril,Tablet,None,Yes
+Cold,NeoCitran,Syrup,Drowsiness,No
+Diarrhea,Econorm,Tablet,Metallic taste,Yes
+Vomiting,Domperidone,Syrup,Drowsiness,No
+Back Pain,Nuberol Forte,Syrup,Drowsiness,No
+Fever,Calpol,Injection,Dizziness,No
+Cold,Sudafed,Injection,None,No
+Sore Throat,Strepsils,Lozenge,Nausea,Yes
+Nausea,Emetrol,Injection,Metallic taste,No
+Fever,Calpol,Cream,Minor irritation,Yes
+Nausea,Emetrol,Injection,Drowsiness,Yes
+Pain,Ponstan,Injection,Minor irritation,No
+Acidity,Gaviscon,Tablet,None,Yes
+Acidity,Omeprazole,Lozenge,Drowsiness,Yes
+Allergy,Benadryl,Capsule,Nausea,No
+Diabetes,Metformin,Injection,None,Yes
+Cold,Dispirin,Lozenge,Stomach upset,Yes
+Back Pain,Nuberol Forte,Syrup,Drowsiness,No
+Vomiting,Stemetil,Capsule,Dizziness,Yes
+Allergy,Benadryl,Syrup,None,No
+Headache,Panadol Extra,Injection,Nausea,Yes
+Joint Pain,Arcoxia,Tablet,None,Yes
+Cough,Tixylix,Capsule,Metallic taste,No
+Headache,Synflex,Lozenge,Minor irritation,Yes
+High Blood Pressure,Losartan,Injection,Drowsiness,Yes
+Joint Pain,Celebrex,Capsule,Dizziness,No
+Flu,Flutab,Lozenge,None,Yes
+Nausea,Emetrol,Injection,Stomach upset,No
+Acidity,Gaviscon,Cream,Nausea,No
+Pain,Brufen,Injection,Metallic taste,No
+Sore Throat,Lemzinc,Lozenge,Metallic taste,No
+Allergy,Loratadine,Capsule,Stomach upset,No
+Cough,Benylin,Syrup,Drowsiness,Yes
+Allergy,Benadryl,Cream,Metallic taste,No
+Diarrhea,Econorm,Tablet,Drowsiness,No
+Fever,Calpol,Capsule,Dizziness,Yes
+Headache,Saridon,Syrup,Minor irritation,No
+Pain,Ketorolac,Syrup,Drowsiness,No
+Asthma,Symbicort,Cream,Metallic taste,No
+Skin Rash,Betnovate,Cream,None,No
+Asthma,Symbicort,Cream,Minor irritation,Yes
+Joint Pain,Arcoxia,Capsule,Nausea,Yes
+Acidity,Risek,Tablet,Minor irritation,No
+Cold,NeoCitran,Capsule,Drowsiness,No
+Allergy,Benadryl,Syrup,Metallic taste,No
+Headache,Saridon,Syrup,Nausea,No
+Acidity,Gaviscon,Injection,Metallic taste,No
+Cough,Benylin,Injection,Drowsiness,No
+Infection,Amoxicillin,Syrup,Minor irritation,No
+Skin Rash,Hydrocortisone,Injection,Stomach upset,Yes
+Fever,Calpol,Injection,Nausea,No
+Asthma,Seretide,Syrup,Minor irritation,No
+Infection,Ciprofloxacin,Capsule,Dizziness,No
+Flu,Contac,Syrup,Nausea,Yes
+Constipation,Duphalac,Cream,None,No
+Cough,Benylin,Injection,Drowsiness,Yes
+Infection,Augmentin,Cream,Nausea,No
+Infection,Amoxicillin,Injection,Metallic taste,No
+Skin Rash,Hydrocortisone,Tablet,Nausea,Yes
+Joint Pain,Arcoxia,Capsule,Nausea,Yes
+Constipation,Duphalac,Tablet,Metallic taste,No
+Skin Rash,Hydrocortisone,Lozenge,None,Yes
+Diarrhea,Econorm,Syrup,Stomach upset,Yes
+Flu,Flutab,Capsule,Dizziness,No
+Constipation,Lactulose,Tablet,Nausea,Yes
+Acidity,Omeprazole,Cream,Metallic taste,No
+Back Pain,Nuberol Forte,Cream,Stomach upset,No
+Infection,Augmentin,Lozenge,Dizziness,Yes
+Flu,Flutab,Tablet,None,Yes
+Flu,Contac,Injection,Drowsiness,No
+Sore Throat,Lemzinc,Lozenge,Minor irritation,No
+Diarrhea,Flagyl,Syrup,None,No
+Allergy,Cetrizine,Capsule,Drowsiness,No
+Headache,Synflex,Syrup,Dizziness,No
+Sore Throat,Strepsils,Cream,Stomach upset,Yes
+Infection,Ciprofloxacin,Capsule,Minor irritation,Yes
+Flu,Contac,Tablet,Stomach upset,No
+Joint Pain,Celebrex,Injection,Metallic taste,No
+Diarrhea,Econorm,Tablet,Minor irritation,Yes
+Cold,NeoCitran,Capsule,Stomach upset,No
+High Blood Pressure,Amlodipine,Injection,Dizziness,No
+Pain,Brufen,Tablet,Stomach upset,Yes
+Sore Throat,Strepsils,Lozenge,Drowsiness,No
+Diabetes,Glibenclamide,Tablet,Drowsiness,Yes
+Constipation,Duphalac,Syrup,Drowsiness,Yes
+Back Pain,Nuberol Forte,Syrup,Minor irritation,No
+Constipation,Duphalac,Syrup,Nausea,No
+Skin Rash,Betnovate,Capsule,Metallic taste,No
+Sore Throat,Cepacol,Syrup,Minor irritation,Yes
+Back Pain,Ibuprofen,Lozenge,Metallic taste,No
+Headache,Panadol Extra,Injection,Metallic taste,No
+Back Pain,Ibuprofen,Injection,Nausea,Yes
+Allergy,Loratadine,Tablet,Stomach upset,Yes
+Fever,Calpol,Injection,Metallic taste,No
+Diabetes,Insulin,Capsule,Dizziness,Yes
+Asthma,Ventolin,Cream,Stomach upset,No
+Allergy,Loratadine,Lozenge,Nausea,Yes
+Pain,Ketorolac,Tablet,Metallic taste,Yes
+Cold,Dispirin,Capsule,Metallic taste,No
+High Blood Pressure,Losartan,Injection,None,Yes
+Fever,Panadol,Injection,Minor irritation,Yes
+Acidity,Omeprazole,Cream,None,Yes
+Vomiting,Zofran,Cream,Metallic taste,Yes
+Cough,Tixylix,Tablet,Stomach upset,Yes
+High Blood Pressure,Lisinopril,Capsule,Dizziness,No
+Cough,Benylin,Injection,Drowsiness,No
+Diarrhea,Imodium,Syrup,Nausea,Yes
+Sore Throat,Lemzinc,Cream,Stomach upset,No
+Diabetes,Metformin,Lozenge,None,No
+Fever,Panadol,Injection,Dizziness,No
+Sore Throat,Strepsils,Cream,Minor irritation,Yes
+Cough,Benylin,Capsule,Drowsiness,Yes
+Joint Pain,Voltral,Cream,Stomach upset,No
+Sore Throat,Lemzinc,Syrup,Stomach upset,Yes
+Nausea,Gravinate,Syrup,Drowsiness,Yes
+Constipation,Duphalac,Syrup,Minor irritation,Yes
+Nausea,Domperidone,Lozenge,Drowsiness,No
+Infection,Amoxicillin,Syrup,Minor irritation,Yes
+Asthma,Seretide,Capsule,None,No
+Constipation,Duphalac,Syrup,Drowsiness,Yes
+Joint Pain,Voltral,Capsule,Minor irritation,No
+Flu,Contac,Tablet,None,Yes
+Fever,Disprol,Tablet,Stomach upset,No
+Asthma,Seretide,Capsule,Drowsiness,Yes
+Infection,Amoxicillin,Injection,Dizziness,Yes
+Asthma,Seretide,Capsule,None,Yes
+High Blood Pressure,Losartan,Cream,Stomach upset,Yes
+Cough,Corex,Tablet,Dizziness,Yes
+Back Pain,Orudis,Injection,None,No
+High Blood Pressure,Lisinopril,Syrup,Minor irritation,No
+Skin Rash,Betnovate,Tablet,Metallic taste,No
+Diarrhea,Econorm,Tablet,Minor irritation,No
+Diarrhea,Imodium,Lozenge,Metallic taste,No
+Nausea,Emetrol,Capsule,None,No
+Acidity,Gaviscon,Capsule,Stomach upset,Yes
+Infection,Ciprofloxacin,Capsule,Nausea,Yes
+Flu,Contac,Syrup,Drowsiness,No
+Diabetes,Glibenclamide,Tablet,Nausea,Yes
+Vomiting,Domperidone,Lozenge,None,No
+Sore Throat,Strepsils,Lozenge,Minor irritation,No
+Flu,Flutab,Lozenge,Dizziness,Yes
+High Blood Pressure,Losartan,Lozenge,None,No
+Infection,Ciprofloxacin,Injection,Drowsiness,No
+Headache,Synflex,Tablet,Stomach upset,Yes
+Asthma,Ventolin,Syrup,Stomach upset,Yes
+Allergy,Cetrizine,Lozenge,Drowsiness,No
+Infection,Augmentin,Cream,Drowsiness,No
+High Blood Pressure,Lisinopril,Injection,Drowsiness,No
+Pain,Ponstan,Injection,Dizziness,No
+Cough,Corex,Lozenge,None,Yes
+Asthma,Symbicort,Cream,None,No
+Diarrhea,Flagyl,Lozenge,None,No
+Sore Throat,Lemzinc,Cream,Minor irritation,Yes
+Sore Throat,Cepacol,Tablet,Drowsiness,Yes
+Pain,Brufen,Tablet,Minor irritation,Yes
+Pain,Ponstan,Lozenge,Dizziness,No
+Joint Pain,Celebrex,Lozenge,Stomach upset,Yes
+Headache,Saridon,Tablet,Minor irritation,Yes
+Asthma,Symbicort,Lozenge,Dizziness,Yes
+Constipation,Duphalac,Syrup,Nausea,No
+Nausea,Gravinate,Cream,Minor irritation,Yes
+Fever,Calpol,Tablet,Drowsiness,Yes
+Pain,Ketorolac,Syrup,Nausea,Yes
+Allergy,Cetrizine,Lozenge,Drowsiness,Yes
+Joint Pain,Voltral,Capsule,Dizziness,Yes
+Infection,Augmentin,Cream,Nausea,Yes
+Allergy,Loratadine,Cream,None,No
+Allergy,Cetrizine,Injection,Drowsiness,No
+Fever,Calpol,Cream,Minor irritation,No
+Nausea,Gravinate,Cream,Minor irritation,Yes
+Pain,Ketorolac,Tablet,Metallic taste,No
+Diabetes,Insulin,Syrup,Stomach upset,No
+Skin Rash,Hydrocortisone,Tablet,Stomach upset,Yes
+Headache,Synflex,Tablet,None,Yes
+Skin Rash,Betnovate,Cream,Nausea,No
+Headache,Saridon,Injection,None,Yes
+Cough,Tixylix,Syrup,None,No
+Joint Pain,Voltral,Lozenge,None,Yes
+Cold,Dispirin,Capsule,Minor irritation,Yes
+Allergy,Loratadine,Cream,Dizziness,Yes
+Nausea,Gravinate,Capsule,Metallic taste,Yes
+Diabetes,Glibenclamide,Tablet,None,Yes
+Acidity,Risek,Injection,Drowsiness,Yes
+Allergy,Loratadine,Cream,Metallic taste,Yes
+Back Pain,Orudis,Capsule,Drowsiness,Yes
+Back Pain,Orudis,Syrup,Minor irritation,Yes
+Fever,Panadol,Capsule,Nausea,Yes
+Infection,Ciprofloxacin,Cream,Stomach upset,No
+Back Pain,Ibuprofen,Lozenge,Drowsiness,Yes
+Allergy,Benadryl,Lozenge,Stomach upset,No
+Sore Throat,Strepsils,Lozenge,Metallic taste,No
+Cough,Benylin,Lozenge,Metallic taste,No
+Asthma,Ventolin,Capsule,Stomach upset,No
+Allergy,Benadryl,Injection,Metallic taste,No
+Constipation,Cremaffin,Tablet,Metallic taste,Yes
+Constipation,Lactulose,Capsule,Metallic taste,Yes
+Joint Pain,Celebrex,Injection,Dizziness,No
+High Blood Pressure,Lisinopril,Lozenge,Minor irritation,Yes
+Asthma,Ventolin,Syrup,Metallic taste,Yes
+Back Pain,Nuberol Forte,Syrup,Stomach upset,Yes
+Pain,Ponstan,Tablet,Stomach upset,Yes
+Allergy,Loratadine,Capsule,Nausea,No
+Acidity,Omeprazole,Tablet,Drowsiness,Yes
+Pain,Ketorolac,Cream,Metallic taste,No
+Sore Throat,Cepacol,Lozenge,Nausea,No
+Cold,Sudafed,Lozenge,Drowsiness,No
+Pain,Ponstan,Lozenge,Metallic taste,No
+Headache,Saridon,Tablet,Minor irritation,No
+Infection,Ciprofloxacin,Tablet,Minor irritation,Yes
+Diabetes,Insulin,Cream,Metallic taste,Yes
+Sore Throat,Lemzinc,Injection,Metallic taste,Yes
+Diarrhea,Econorm,Cream,None,Yes
+Diarrhea,Econorm,Capsule,Drowsiness,Yes
+Cold,Dispirin,Tablet,Stomach upset,Yes
+Diarrhea,Econorm,Cream,Stomach upset,Yes
+Skin Rash,Fucidin,Cream,Stomach upset,No
+Acidity,Risek,Cream,Dizziness,Yes
+Sore Throat,Strepsils,Capsule,None,Yes
+Skin Rash,Hydrocortisone,Injection,Metallic taste,Yes
+Asthma,Seretide,Lozenge,Drowsiness,Yes
+Acidity,Omeprazole,Capsule,Minor irritation,No
+Headache,Saridon,Lozenge,Minor irritation,No
+Cold,Sudafed,Lozenge,Minor irritation,No
+Cold,NeoCitran,Capsule,Dizziness,No
+Acidity,Risek,Capsule,Stomach upset,No
+Headache,Saridon,Injection,Metallic taste,Yes
+Asthma,Ventolin,Injection,Metallic taste,Yes
+Headache,Saridon,Syrup,Minor irritation,Yes
+Back Pain,Ibuprofen,Syrup,Drowsiness,Yes
+Acidity,Gaviscon,Cream,None,Yes
+Back Pain,Ibuprofen,Tablet,None,Yes
+Diabetes,Insulin,Tablet,Drowsiness,No
+Asthma,Seretide,Tablet,Dizziness,Yes
+Back Pain,Orudis,Cream,Minor irritation,Yes
+Cold,NeoCitran,Tablet,None,Yes
+Flu,Flutab,Capsule,Dizziness,Yes
+Allergy,Benadryl,Cream,Dizziness,Yes
+Acidity,Gaviscon,Tablet,Metallic taste,No
+Fever,Panadol,Syrup,Nausea,No
+Infection,Amoxicillin,Capsule,Dizziness,No
+Sore Throat,Strepsils,Cream,None,Yes
+Cough,Corex,Tablet,None,Yes
+Fever,Panadol,Tablet,Minor irritation,Yes
+Diarrhea,Imodium,Lozenge,Drowsiness,Yes
+Diabetes,Metformin,Cream,Nausea,No
+Cold,NeoCitran,Injection,Nausea,No
+Headache,Synflex,Cream,Nausea,No
+Vomiting,Domperidone,Capsule,Dizziness,Yes
+Fever,Disprol,Syrup,Metallic taste,Yes
+Acidity,Risek,Injection,Drowsiness,No
+Skin Rash,Hydrocortisone,Capsule,Drowsiness,No
+Allergy,Loratadine,Lozenge,Dizziness,Yes
+Acidity,Omeprazole,Syrup,Nausea,Yes
+Flu,Contac,Tablet,Metallic taste,Yes
+Nausea,Gravinate,Lozenge,Minor irritation,No
+Nausea,Emetrol,Cream,Dizziness,No
+Infection,Augmentin,Cream,None,Yes
+High Blood Pressure,Lisinopril,Injection,Stomach upset,Yes
+Acidity,Risek,Capsule,Minor irritation,Yes
+Back Pain,Nuberol Forte,Tablet,Minor irritation,No
+Diarrhea,Imodium,Tablet,Minor irritation,Yes
+Sore Throat,Lemzinc,Capsule,Stomach upset,Yes
+Flu,Actifed,Capsule,Minor irritation,No
+Cold,Sudafed,Injection,Drowsiness,No
+Back Pain,Ibuprofen,Capsule,Stomach upset,No
+Cough,Tixylix,Capsule,Drowsiness,No
+Cold,Sudafed,Cream,None,Yes
+Flu,Actifed,Syrup,Stomach upset,Yes
+Fever,Disprol,Syrup,Metallic taste,No
+Infection,Ciprofloxacin,Injection,Nausea,No
+Nausea,Emetrol,Syrup,Nausea,Yes
+Pain,Ponstan,Syrup,Stomach upset,No
+Acidity,Gaviscon,Lozenge,Stomach upset,Yes
+Vomiting,Domperidone,Cream,Drowsiness,Yes
+Asthma,Ventolin,Tablet,Drowsiness,Yes
+Back Pain,Nuberol Forte,Tablet,Stomach upset,No
+Skin Rash,Fucidin,Tablet,None,No
+Pain,Ponstan,Injection,Nausea,Yes
+Diabetes,Insulin,Syrup,Minor irritation,No
+Cough,Corex,Injection,Stomach upset,Yes
+Diarrhea,Imodium,Lozenge,Minor irritation,Yes
+Back Pain,Orudis,Capsule,None,No
+Flu,Flutab,Cream,Minor irritation,No
+Pain,Brufen,Syrup,Drowsiness,No
+Nausea,Gravinate,Injection,Nausea,Yes
+Pain,Brufen,Syrup,Minor irritation,Yes
+Diarrhea,Flagyl,Tablet,Dizziness,Yes
+Cough,Benylin,Injection,Metallic taste,Yes
+Allergy,Loratadine,Tablet,Drowsiness,No
+Joint Pain,Voltral,Lozenge,Stomach upset,No
+Nausea,Emetrol,Cream,Nausea,No
+Back Pain,Orudis,Capsule,Minor irritation,Yes
+Diabetes,Insulin,Syrup,None,No
+Vomiting,Zofran,Capsule,Nausea,No
+Pain,Ponstan,Syrup,Stomach upset,No
+Diarrhea,Imodium,Tablet,Metallic taste,Yes
+Acidity,Risek,Capsule,Drowsiness,Yes
+Diabetes,Insulin,Injection,None,No
+Cough,Corex,Cream,None,No
+Sore Throat,Strepsils,Cream,Metallic taste,No
+Acidity,Omeprazole,Injection,Nausea,Yes
+Skin Rash,Hydrocortisone,Cream,Stomach upset,No
+Constipation,Cremaffin,Capsule,Minor irritation,No
+Joint Pain,Celebrex,Lozenge,Dizziness,Yes
+Skin Rash,Fucidin,Syrup,Nausea,Yes
+High Blood Pressure,Amlodipine,Lozenge,Minor irritation,No
+Vomiting,Zofran,Capsule,Nausea,No
+Back Pain,Ibuprofen,Cream,Drowsiness,Yes
+Allergy,Loratadine,Injection,Nausea,No
+Joint Pain,Voltral,Cream,Nausea,No
+Sore Throat,Strepsils,Injection,Minor irritation,Yes
+Skin Rash,Fucidin,Capsule,Drowsiness,Yes
+Constipation,Lactulose,Injection,Metallic taste,No
+Pain,Ponstan,Lozenge,None,No
+Constipation,Lactulose,Cream,Minor irritation,Yes
+Vomiting,Stemetil,Tablet,Stomach upset,Yes
+Sore Throat,Lemzinc,Capsule,Stomach upset,No
+Vomiting,Domperidone,Tablet,Minor irritation,No
+Flu,Actifed,Lozenge,Minor irritation,No
+Cough,Tixylix,Tablet,Dizziness,No
+High Blood Pressure,Amlodipine,Cream,Metallic taste,No
+Pain,Ketorolac,Injection,Nausea,Yes
+Asthma,Ventolin,Cream,Nausea,Yes
+Fever,Panadol,Injection,Metallic taste,No
+Infection,Ciprofloxacin,Capsule,Minor irritation,Yes
+High Blood Pressure,Losartan,Cream,Nausea,No
+Acidity,Omeprazole,Capsule,None,Yes
+Allergy,Cetrizine,Syrup,Dizziness,No
+Nausea,Gravinate,Lozenge,Stomach upset,Yes
+Vomiting,Domperidone,Capsule,Nausea,No
+Sore Throat,Strepsils,Syrup,Drowsiness,No
+Asthma,Ventolin,Capsule,Metallic taste,No
+Headache,Saridon,Syrup,Stomach upset,No
+High Blood Pressure,Losartan,Lozenge,None,No
+Diarrhea,Econorm,Tablet,Stomach upset,No
+Asthma,Ventolin,Injection,Minor irritation,Yes
+Back Pain,Orudis,Capsule,Nausea,No
+Infection,Augmentin,Tablet,Dizziness,No
+Constipation,Lactulose,Cream,Stomach upset,Yes
+Diabetes,Insulin,Injection,Nausea,No
+Vomiting,Zofran,Lozenge,Minor irritation,No
+Constipation,Cremaffin,Syrup,None,Yes
+Back Pain,Ibuprofen,Lozenge,Stomach upset,No
+Asthma,Ventolin,Cream,None,Yes
+Constipation,Lactulose,Tablet,Nausea,No
+Flu,Actifed,Tablet,Minor irritation,Yes
+Fever,Calpol,Tablet,Drowsiness,Yes
+Diabetes,Metformin,Injection,Drowsiness,Yes
+Nausea,Emetrol,Lozenge,None,Yes
+Headache,Saridon,Tablet,Stomach upset,Yes
+Headache,Saridon,Syrup,Metallic taste,Yes
+High Blood Pressure,Lisinopril,Tablet,Nausea,No
+Sore Throat,Lemzinc,Tablet,Nausea,Yes
+Joint Pain,Voltral,Lozenge,Minor irritation,Yes
+Cold,Sudafed,Injection,None,No
+Headache,Saridon,Lozenge,None,No
+Joint Pain,Celebrex,Lozenge,Metallic taste,No
+Acidity,Risek,Cream,None,Yes
+Acidity,Gaviscon,Cream,Dizziness,No
+Asthma,Symbicort,Tablet,None,No
+High Blood Pressure,Losartan,Injection,Stomach upset,Yes
+Asthma,Symbicort,Syrup,Minor irritation,Yes
+Fever,Calpol,Tablet,Dizziness,Yes
+Flu,Contac,Syrup,Minor irritation,Yes
+High Blood Pressure,Lisinopril,Cream,None,No
+Asthma,Seretide,Lozenge,None,No
+Infection,Ciprofloxacin,Lozenge,Nausea,No
+Cold,Sudafed,Syrup,None,Yes
+Acidity,Risek,Lozenge,Minor irritation,No
+Back Pain,Orudis,Lozenge,None,No
+Skin Rash,Fucidin,Tablet,Nausea,No
+Headache,Panadol Extra,Cream,Dizziness,Yes
+Headache,Panadol Extra,Tablet,None,No
+Infection,Amoxicillin,Lozenge,Drowsiness,Yes
+Cough,Tixylix,Capsule,Metallic taste,No
+Constipation,Cremaffin,Tablet,Stomach upset,Yes
+Diabetes,Insulin,Tablet,Drowsiness,Yes
+Nausea,Domperidone,Syrup,Stomach upset,No
+Diarrhea,Econorm,Lozenge,Nausea,No
+Fever,Panadol,Cream,Dizziness,Yes
+Skin Rash,Hydrocortisone,Lozenge,None,No
+Diarrhea,Econorm,Lozenge,Drowsiness,No
+Back Pain,Nuberol Forte,Tablet,Dizziness,Yes
+Pain,Ponstan,Capsule,Stomach upset,Yes
+Pain,Brufen,Injection,Dizziness,Yes
+Constipation,Cremaffin,Syrup,Nausea,No
+Nausea,Emetrol,Syrup,Minor irritation,No
+Cold,Dispirin,Lozenge,Stomach upset,Yes
+Cold,Sudafed,Capsule,Metallic taste,No
+Asthma,Seretide,Lozenge,None,Yes
+Infection,Ciprofloxacin,Capsule,Drowsiness,No
+Headache,Saridon,Cream,Metallic taste,No
+Fever,Calpol,Capsule,None,Yes
+Nausea,Emetrol,Lozenge,Metallic taste,Yes
+Fever,Disprol,Cream,Minor irritation,No
+Joint Pain,Voltral,Lozenge,Drowsiness,No
+Vomiting,Zofran,Tablet,Metallic taste,No
+Cold,NeoCitran,Capsule,None,No
+Asthma,Ventolin,Syrup,Stomach upset,Yes
+Diabetes,Glibenclamide,Tablet,Metallic taste,No
+Cold,Dispirin,Capsule,Drowsiness,No
+Headache,Synflex,Cream,Nausea,No
+High Blood Pressure,Lisinopril,Injection,Dizziness,No
+Headache,Synflex,Tablet,Dizziness,Yes
+Fever,Calpol,Cream,Minor irritation,Yes
+Infection,Ciprofloxacin,Capsule,Drowsiness,No
+Infection,Amoxicillin,Injection,Minor irritation,No
+High Blood Pressure,Losartan,Tablet,Drowsiness,No
+Infection,Ciprofloxacin,Syrup,Stomach upset,No
+Diarrhea,Imodium,Injection,Stomach upset,Yes
+Nausea,Domperidone,Cream,Minor irritation,No
+Flu,Actifed,Syrup,Stomach upset,No
+Nausea,Domperidone,Syrup,Stomach upset,Yes
+Acidity,Omeprazole,Injection,Dizziness,Yes
+High Blood Pressure,Losartan,Injection,None,No
+Asthma,Seretide,Syrup,Metallic taste,No
+Headache,Panadol Extra,Capsule,Metallic taste,No
+Acidity,Omeprazole,Tablet,Minor irritation,No
+Skin Rash,Betnovate,Tablet,Stomach upset,Yes
+Cough,Corex,Capsule,Nausea,Yes
+Skin Rash,Betnovate,Lozenge,Dizziness,Yes
+Asthma,Seretide,Injection,None,Yes
+Acidity,Omeprazole,Syrup,Minor irritation,Yes
+Back Pain,Orudis,Injection,Minor irritation,No
+High Blood Pressure,Losartan,Lozenge,Dizziness,Yes
+Joint Pain,Voltral,Injection,Metallic taste,Yes
+Flu,Flutab,Injection,Drowsiness,Yes
+Sore Throat,Strepsils,Capsule,Nausea,Yes
+Sore Throat,Strepsils,Injection,None,No
+Acidity,Risek,Tablet,Stomach upset,Yes
+Headache,Saridon,Injection,None,No
+Skin Rash,Betnovate,Injection,Drowsiness,Yes
+Sore Throat,Strepsils,Cream,Metallic taste,No
+High Blood Pressure,Losartan,Syrup,Stomach upset,Yes
+Allergy,Benadryl,Cream,Dizziness,Yes
+Vomiting,Zofran,Tablet,Metallic taste,Yes
+Vomiting,Stemetil,Lozenge,Nausea,Yes
+High Blood Pressure,Amlodipine,Lozenge,Minor irritation,Yes
+Asthma,Symbicort,Tablet,Nausea,Yes
+Vomiting,Stemetil,Lozenge,Drowsiness,Yes
+Diabetes,Metformin,Cream,Minor irritation,No
+Acidity,Risek,Lozenge,None,Yes
