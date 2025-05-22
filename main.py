@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import List, Optional, Dict, Union
+from typing import List, Optional, Dict, Union, Any
 import agent
 
 app = FastAPI()
@@ -42,6 +42,8 @@ async def start_session(data: PatientData):
         "matched_medicines": [{} for _ in data.symptoms],
         "prescription": None,
         "question": None,
+        "input_type": None,
+        "options": [],
         "history": [],
         "parent_symptoms": [None] * len(data.symptoms),
         "extra_info": [{} for _ in data.symptoms],
@@ -64,6 +66,8 @@ async def start_session(data: PatientData):
             "session_id": session_id,
             "status": "needs_clarification",
             "question": state["question"],
+            "input_type": state.get("input_type", "text"),
+            "options": state.get("options", []),
             "symptom": state["symptoms"][state["current_index"]],
             "symptom_index": state["current_index"] + 1,
             "total_symptoms": len(state["symptoms"])
@@ -92,6 +96,8 @@ async def start_session(data: PatientData):
                     "session_id": session_id,
                     "status": "needs_clarification",
                     "question": state["question"],
+                    "input_type": state.get("input_type", "text"),
+                    "options": state.get("options", []),
                     "symptom": state["symptoms"][idx],
                     "symptom_index": idx + 1,
                     "total_symptoms": len(state["symptoms"])
@@ -138,6 +144,8 @@ async def answer_question(data: ClarificationAnswer):
     state["history"].append(state["question"])
     state["history"].append(data.answer)
     state["question"] = None
+    state["input_type"] = None
+    state["options"] = []
     
     # Process next step
     state = agent.app.invoke(state)
@@ -149,6 +157,8 @@ async def answer_question(data: ClarificationAnswer):
             "session_id": data.session_id,
             "status": "needs_clarification",
             "question": state["question"],
+            "input_type": state.get("input_type", "text"),
+            "options": state.get("options", []),
             "symptom": state["symptoms"][idx],
             "symptom_index": idx + 1,
             "total_symptoms": len(state["symptoms"])
@@ -193,6 +203,8 @@ async def answer_question(data: ClarificationAnswer):
                     "session_id": data.session_id,
                     "status": "needs_clarification",
                     "question": state["question"],
+                    "input_type": state.get("input_type", "text"),
+                    "options": state.get("options", []),
                     "symptom": state["symptoms"][idx],
                     "symptom_index": idx + 1,
                     "total_symptoms": len(state["symptoms"])
@@ -216,6 +228,8 @@ async def get_prescription(data: PatientData):
         "matched_medicines": [{} for _ in data.symptoms],
         "prescription": None,
         "question": None,
+        "input_type": None,
+        "options": [],
         "history": [],
         "parent_symptoms": [None] * len(data.symptoms),
         "extra_info": [{} for _ in data.symptoms],
@@ -240,6 +254,8 @@ async def get_prescription(data: PatientData):
                 state["history"].append(state["question"])
                 state["history"].append("1 week")
                 state["question"] = None
+                state["input_type"] = None
+                state["options"] = []
             if state["clarified"][idx]:
                 state["current_index"] += 1
             continue

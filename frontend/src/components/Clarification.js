@@ -1,16 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Clarification({ question, symptomInfo, onSubmit, loading }) {
-  const [answer, setAnswer] = useState('');
+  const [textAnswer, setTextAnswer] = useState('');
+  const [selectedOption, setSelectedOption] = useState('');
+  
+  const { symptom, symptomIndex, totalSymptoms, inputType, options } = symptomInfo || { 
+    symptom: '', 
+    symptomIndex: 1, 
+    totalSymptoms: 1,
+    inputType: 'text',
+    options: []
+  };
+  
+  // Reset state when question changes
+  useEffect(() => {
+    setTextAnswer('');
+    setSelectedOption('');
+  }, [question]);
   
   const handleSubmit = (e) => {
     e.preventDefault();
+    const answer = inputType === 'checkbox' ? selectedOption : textAnswer;
     onSubmit(answer);
-    setAnswer('');
+    setTextAnswer('');
+    setSelectedOption('');
   };
 
-  const { symptom, symptomIndex, totalSymptoms } = symptomInfo || { symptom: '', symptomIndex: 1, totalSymptoms: 1 };
-  
   return (
     <div className="card">
       <div className="card-header bg-info text-white">
@@ -53,34 +68,69 @@ function Clarification({ question, symptomInfo, onSubmit, loading }) {
         
         <div className="answer-section">
           <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label htmlFor="answer" className="form-label">
-                <i className="bi bi-reply-fill me-2"></i>
-                Your Answer
-              </label>
-              <div className="input-group">
-                <span className="input-group-text bg-light">
-                  <i className="bi bi-pencil-square"></i>
-                </span>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="answer"
-                  value={answer}
-                  onChange={(e) => setAnswer(e.target.value)}
-                  placeholder="Type your answer here..."
-                  required
-                  disabled={loading}
-                  autoFocus
-                />
+            {inputType === 'checkbox' && options && options.length > 0 ? (
+              <div className="mb-4">
+                <label className="form-label d-flex align-items-center">
+                  <i className="bi bi-check2-square me-2"></i>
+                  Select an option
+                </label>
+                <div className="options-container p-2 rounded border">
+                  {options.map((option, index) => (
+                    <div className="form-check mb-2" key={index}>
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name="symptomOption"
+                        id={`option-${index}`}
+                        value={option}
+                        checked={selectedOption === option}
+                        onChange={() => setSelectedOption(option)}
+                        disabled={loading}
+                        required
+                      />
+                      <label className="form-check-label" htmlFor={`option-${index}`}>
+                        {option}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+                {!selectedOption && (
+                  <div className="form-text">
+                    <i className="bi bi-info-circle me-1"></i>
+                    Please select one option
+                  </div>
+                )}
               </div>
-            </div>
+            ) : (
+              <div className="mb-4">
+                <label htmlFor="answer" className="form-label">
+                  <i className="bi bi-reply-fill me-2"></i>
+                  Your Answer
+                </label>
+                <div className="input-group">
+                  <span className="input-group-text bg-light">
+                    <i className="bi bi-pencil-square"></i>
+                  </span>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="answer"
+                    value={textAnswer}
+                    onChange={(e) => setTextAnswer(e.target.value)}
+                    placeholder="Type your answer here..."
+                    required
+                    disabled={loading}
+                    autoFocus
+                  />
+                </div>
+              </div>
+            )}
             
             <div className="d-grid gap-2">
               <button
                 type="submit"
                 className="btn btn-info text-white py-2"
-                disabled={loading}
+                disabled={loading || (inputType === 'checkbox' && !selectedOption)}
               >
                 {loading ? (
                   <>

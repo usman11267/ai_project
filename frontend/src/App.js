@@ -38,7 +38,9 @@ function App() {
         setSymptomInfo({
           symptom: response.data.symptom,
           symptomIndex: response.data.symptom_index,
-          totalSymptoms: response.data.total_symptoms
+          totalSymptoms: response.data.total_symptoms,
+          inputType: response.data.input_type || 'text',
+          options: response.data.options || []
         });
         setStep(2); // Go to clarification step
       } else if (response.data.status === 'complete') {
@@ -74,7 +76,9 @@ function App() {
         setSymptomInfo({
           symptom: response.data.symptom,
           symptomIndex: response.data.symptom_index,
-          totalSymptoms: response.data.total_symptoms
+          totalSymptoms: response.data.total_symptoms,
+          inputType: response.data.input_type || 'text',
+          options: response.data.options || []
         });
         // Stay on clarification step
       } else if (response.data.status === 'complete') {
