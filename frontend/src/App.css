@@ -1,0 +1,262 @@
+/* Base App Styling */
+.App {
+  min-height: 100vh;
+  position: relative;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.app-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+  z-index: -1;
+}
+
+.content-wrapper {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.content-wrapper:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* Logo and Header Styling */
+.logo-container {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Progress Steps */
+.steps-indicator {
+  width: 60%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.steps-indicator::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background-color: #e9ecef;
+  z-index: 0;
+}
+
+.step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.step-circle {
+  width: 50px;
+  height: 50px;
+  background-color: #f8f9fa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  border: 2px solid #dee2e6;
+  color: #adb5bd;
+  transition: all 0.3s ease;
+}
+
+.step-label {
+  font-size: 0.8rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.step-item.active .step-circle {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+  transform: scale(1.1);
+}
+
+.step-item.active .step-label {
+  color: #007bff;
+  font-weight: 600;
+}
+
+/* Card Styling */
+.card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card-header {
+  border-radius: 15px 15px 0 0 !important;
+  padding: 1.25rem 1.5rem;
+  border-bottom: none;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Form Controls */
+.form-control, .btn {
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Buttons */
+.btn {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #007bff, #4da3ff);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #0069d9, #2e88fd);
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background: linear-gradient(45deg, #28a745, #5dd879);
+  border: none;
+}
+
+.btn-info {
+  background: linear-gradient(45deg, #17a2b8, #5ad1e5);
+  border: none;
+}
+
+/* Prescription */
+.prescription-text {
+  background-color: #fff;
+  min-height: 200px;
+  border-radius: 8px;
+  padding: 1.5rem;
+  line-height: 1.8;
+}
+
+/* Add after the prescription-text styles */
+.prescription-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8rem;
+  opacity: 0.05;
+  z-index: 0;
+}
+
+.text-info {
+  color: #17a2b8 !important;
+}
+
+.text-warning {
+  color: #ffc107 !important;
+}
+
+.text-success {
+  color: #28a745 !important;
+}
+
+.text-primary {
+  color: #007bff !important;
+}
+
+.opacity-10 {
+  opacity: 0.1;
+}
+
+.doctor-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(23, 162, 184, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .steps-indicator {
+    width: 90%;
+  }
+  
+  .step-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+  
+  .step-label {
+    font-size: 0.7rem;
+  }
+}
+
+/* Print styling */
+@media print {
+  .btn {
+    display: none;
+  }
+  
+  .card {
+    box-shadow: none;
+    border: none;
+  }
+  
+  .card-header {
+    background-color: #fff !important;
+    color: #000 !important;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .App {
+    background-color: #fff;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+  
+  .progress, .steps-indicator, footer {
+    display: none;
+  }
+}
