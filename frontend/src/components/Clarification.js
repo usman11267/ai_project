@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Clarification({ question, onSubmit, loading }) {
+function Clarification({ question, symptomInfo, onSubmit, loading }) {
   const [answer, setAnswer] = useState('');
   
   const handleSubmit = (e) => {
@@ -8,16 +8,32 @@ function Clarification({ question, onSubmit, loading }) {
     onSubmit(answer);
     setAnswer('');
   };
+
+  const { symptom, symptomIndex, totalSymptoms } = symptomInfo || { symptom: '', symptomIndex: 1, totalSymptoms: 1 };
   
   return (
     <div className="card">
       <div className="card-header bg-info text-white">
-        <h3 className="mb-0 d-flex align-items-center">
-          <i className="bi bi-chat-quote-fill me-2"></i>
-          Symptom Clarification
+        <h3 className="mb-0 d-flex align-items-center justify-content-between">
+          <div>
+            <i className="bi bi-chat-quote-fill me-2"></i>
+            Symptom Clarification
+          </div>
+          <div className="symptom-progress">
+            <span className="badge rounded-pill bg-light text-dark">
+              Symptom {symptomIndex} of {totalSymptoms}
+            </span>
+          </div>
         </h3>
       </div>
       <div className="card-body">
+        {symptom && (
+          <div className="current-symptom mb-3 p-2 bg-light rounded d-flex align-items-center">
+            <i className="bi bi-clipboard2-pulse text-info me-2"></i>
+            <span>Current symptom: <strong>{symptom}</strong></span>
+          </div>
+        )}
+        
         <div className="doctor-question mb-4 p-3 bg-light rounded border-start border-info border-4">
           <div className="d-flex">
             <div className="me-3">
@@ -55,6 +71,7 @@ function Clarification({ question, onSubmit, loading }) {
                   placeholder="Type your answer here..."
                   required
                   disabled={loading}
+                  autoFocus
                 />
               </div>
             </div>

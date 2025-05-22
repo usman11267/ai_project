@@ -14,6 +14,7 @@ df = pd.read_csv("pakistani_medicine_dataset.csv")
 # --- Semantic Net ---
 class SemanticNet:
     def __init__(self):
+        # Enhanced semantic network with more symptoms and clarification questions
         self.net = {
             "pain": ["headache", "stomachache", "joint pain", "back pain", "chest pain"],
             "fever": ["low grade fever", "high fever", "intermittent fever"],
@@ -21,9 +22,42 @@ class SemanticNet:
             "infection": ["urinary tract infection", "skin infection", "respiratory infection"],
             "fatigue": ["chronic fatigue", "acute fatigue"],
             "rash": ["skin rash", "allergic rash"],
-            "bp": ["low bp", "high bp"]
+            "bp": ["low bp", "high bp"],
+            "headache": ["migraine", "tension headache", "cluster headache", "sinus headache"],
+            "stomachache": ["upper abdominal pain", "lower abdominal pain", "cramps"],
+            "dizziness": ["lightheadedness", "vertigo", "faintness"],
+            "nausea": ["morning sickness", "motion sickness", "medication-induced nausea"],
+            "breathing": ["shortness of breath", "wheezing", "labored breathing"],
+            "insomnia": ["difficulty falling asleep", "difficulty staying asleep", "early morning awakening"],
+            "allergy": ["food allergy", "seasonal allergy", "drug allergy", "skin allergy"],
+            "anxiety": ["generalized anxiety", "panic attacks", "social anxiety"],
+            "cold": ["common cold", "flu", "sinus infection"],
+            "diarrhea": ["acute diarrhea", "chronic diarrhea", "traveler's diarrhea"]
         }
         self.child_to_parent = {child: parent for parent, children in self.net.items() for child in children}
+        
+        # Common follow-up questions for all symptoms
+        self.common_followups = {
+            "severity": "How would you rate the severity of your {} on a scale of 1-10?",
+            "duration": "How long have you had this {}?",
+            "frequency": "How often do you experience this {}?"
+        }
+        
+        # Specific follow-up questions for certain symptoms
+        self.specific_followups = {
+            "headache": ["Is it on one side or both sides?", "Does it throb or is it a steady pain?"],
+            "fever": ["Have you taken any medication to reduce it?", "Are you experiencing chills or sweating?"],
+            "cough": ["Is there any phlegm or mucus?", "Is it worse at night?"],
+            "rash": ["Is it itchy?", "Has the rash spread since it first appeared?"],
+            "stomachache": ["Is it related to eating?", "Does it come and go or is it constant?"],
+            "pain": ["Does anything make it better or worse?", "Does it radiate to other areas?"],
+            "dizziness": ["Does it happen when you stand up?", "Is it associated with nausea?"],
+            "breathing": ["Does it occur at rest or with activity?", "Do you have a history of respiratory conditions?"],
+            "insomnia": ["Do you feel tired during the day?", "What time do you typically go to bed?"],
+            "allergy": ["Have you been exposed to any new substances?", "Do you have any known allergies?"],
+            "diarrhea": ["Is there blood in your stool?", "Are you experiencing abdominal pain?"],
+            "cold": ["Do you have a sore throat?", "Are you experiencing body aches?"]
+        }
 
     def is_vague(self, symptom: str) -> bool:
         return symptom in self.net
@@ -48,6 +82,22 @@ class SemanticNet:
             if symptom in known or known in symptom:
                 return known
         return None
+        
+    def get_followup_questions(self, symptom: str) -> List[str]:
+        """Get follow-up questions for a specific symptom"""
+        questions = []
+        
+        # Add symptom-specific questions if available
+        key = self.find_closest_symptom(symptom)
+        if key in self.specific_followups:
+            questions.extend(self.specific_followups[key])
+        
+        # Add duration question if not already added
+        duration_q = self.common_followups["duration"].format(symptom)
+        if duration_q not in questions:
+            questions.append(duration_q)
+            
+        return questions
 
 semantic_net = SemanticNet()
 
@@ -64,6 +114,8 @@ class AgentState(TypedDict):
     parent_symptoms: List[Optional[str]]
     extra_info: List[Dict[str, str]]
     current_index: int
+    followup_questions: List[List[str]]  # New field to track follow-up questions for each symptom
+    followup_index: List[int]  # New field to track which follow-up question we're on
 
 # --- Node: Clarify Symptom ---
 def clarify_symptom(state: AgentState) -> AgentState:
@@ -81,35 +133,57 @@ def clarify_symptom(state: AgentState) -> AgentState:
         state["extra_info"] = [{} for _ in symptoms]
     if "matched_medicines" not in state or len(state["matched_medicines"]) != len(symptoms):
         state["matched_medicines"] = [{} for _ in symptoms]
+    if "followup_questions" not in state or len(state["followup_questions"]) != len(symptoms):
+        state["followup_questions"] = [[] for _ in symptoms]
+    if "followup_index" not in state or len(state["followup_index"]) != len(symptoms):
+        state["followup_index"] = [0] * len(symptoms)
 
     symptom = symptoms[idx].lower()
     history = state.get("history", [])
     extra_info = state["extra_info"][idx]
     clarified = state["clarified"]
-
-    # Check if symptom is vague (e.g., 'pain', 'cough')
+    
+    # First check if the symptom is vague (e.g., 'pain', 'cough')
     if not clarified[idx] and semantic_net.is_vague(symptom):
         options = semantic_net.get_children(symptom)
         question = f"Your symptom '{symptom}' is broad. Please clarify: {', '.join(options)}"
         if question in history:
-            clarified[idx] = True
-            return {**state, "clarified": clarified}
+            # If we've already asked about the vague symptom, move to follow-up questions
+            if not state["followup_questions"][idx]:
+                state["followup_questions"][idx] = semantic_net.get_followup_questions(symptom)
+            
+            if state["followup_index"][idx] < len(state["followup_questions"][idx]):
+                # Ask the next follow-up question
+                next_question = state["followup_questions"][idx][state["followup_index"][idx]]
+                state["followup_index"][idx] += 1
+                return {
+                    **state,
+                    "question": next_question,
+                    "history": history + [next_question]
+                }
+            else:
+                # No more questions, mark as clarified
+                clarified[idx] = True
+                return {**state, "clarified": clarified}
+        
         return {
             **state,
             "question": question,
             "history": history + [question]
         }
 
-    # Ask duration only if not already asked and not already provided
-    if not extra_info.get("duration"):
-        duration_question = f"How long have you had this '{symptom}'?"
-        if any("how long" in q.lower() for q in history):
-            clarified[idx] = True
-            return {**state, "clarified": clarified}
+    # If not a vague symptom, prepare follow-up questions
+    if not state["followup_questions"][idx]:
+        state["followup_questions"][idx] = semantic_net.get_followup_questions(symptom)
+    
+    # Ask follow-up questions in sequence
+    if state["followup_index"][idx] < len(state["followup_questions"][idx]):
+        next_question = state["followup_questions"][idx][state["followup_index"][idx]]
+        state["followup_index"][idx] += 1
         return {
             **state,
-            "question": duration_question,
-            "history": history + [duration_question]
+            "question": next_question,
+            "history": history + [next_question]
         }
 
     clarified[idx] = True
@@ -254,6 +328,8 @@ if __name__ == "__main__":
         "parent_symptoms": [None] * len(symptoms),
         "extra_info": [{} for _ in symptoms],
         "current_index": 0,
+        "followup_questions": [[] for _ in symptoms],
+        "followup_index": [0] * len(symptoms),
     }
 
     while True:
@@ -271,12 +347,27 @@ if __name__ == "__main__":
             if state.get("question"):
                 print(f"\n🤔 Doctor AI (for symptom {idx+1}/{len(symptoms)} '{symptoms[idx]}'): " + state["question"])
                 answer = input("📝 Your answer: ").strip().lower()
-                if "how long" in state["question"].lower():
+                
+                # Store the answer appropriately based on the question type
+                if "how long" in state["question"].lower() or "duration" in state["question"].lower():
                     state["extra_info"][idx]["duration"] = answer
-                else:
+                elif "severity" in state["question"].lower():
+                    state["extra_info"][idx]["severity"] = answer
+                elif "how often" in state["question"].lower() or "frequency" in state["question"].lower():
+                    state["extra_info"][idx]["frequency"] = answer
+                elif "is it on one side" in state["question"].lower():
+                    state["extra_info"][idx]["side"] = answer
+                elif "itchy" in state["question"].lower():
+                    state["extra_info"][idx]["itchy"] = answer
+                elif "your symptom" in state["question"].lower() and "please clarify" in state["question"].lower():
                     parent = semantic_net.find_parent(symptoms[idx]) or symptoms[idx]
                     state["parent_symptoms"][idx] = parent
                     state["symptoms"][idx] = answer
+                else:
+                    # Generic storage for other follow-up questions
+                    question_key = state["question"].lower().replace("?", "").strip()
+                    state["extra_info"][idx][question_key] = answer
+                    
                 state["history"].append(state["question"])
                 state["history"].append(answer)
                 state["question"] = None

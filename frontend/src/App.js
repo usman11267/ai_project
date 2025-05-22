@@ -11,8 +11,10 @@ function App() {
   const [step, setStep] = useState(1); // 1: Form, 2: Clarification, 3: Prescription
   const [patientData, setPatientData] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState('');
+  const [symptomInfo, setSymptomInfo] = useState(null);
   const [sessionId, setSessionId] = useState(null);
   const [prescription, setPrescription] = useState('');
+  const [symptomDetails, setSymptomDetails] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const handleFormSubmit = async (data) => {
@@ -33,10 +35,18 @@ function App() {
         // We need to ask a clarification question
         setSessionId(response.data.session_id);
         setCurrentQuestion(response.data.question);
+        setSymptomInfo({
+          symptom: response.data.symptom,
+          symptomIndex: response.data.symptom_index,
+          totalSymptoms: response.data.total_symptoms
+        });
         setStep(2); // Go to clarification step
       } else if (response.data.status === 'complete') {
         // We have a prescription already
         setPrescription(response.data.prescription);
+        if (response.data.symptom_details) {
+          setSymptomDetails(response.data.symptom_details);
+        }
         setStep(3); // Go to prescription step
       }
     } catch (error) {
@@ -61,10 +71,18 @@ function App() {
       if (response.data.status === 'needs_clarification') {
         // We need to ask another clarification question
         setCurrentQuestion(response.data.question);
+        setSymptomInfo({
+          symptom: response.data.symptom,
+          symptomIndex: response.data.symptom_index,
+          totalSymptoms: response.data.total_symptoms
+        });
         // Stay on clarification step
       } else if (response.data.status === 'complete') {
         // We have a prescription
         setPrescription(response.data.prescription);
+        if (response.data.symptom_details) {
+          setSymptomDetails(response.data.symptom_details);
+        }
         setStep(3); // Go to prescription step
       }
     } catch (error) {
@@ -78,8 +96,10 @@ function App() {
     setStep(1);
     setPatientData(null);
     setCurrentQuestion('');
+    setSymptomInfo(null);
     setSessionId(null);
     setPrescription('');
+    setSymptomDetails([]);
   };
 
   return (
@@ -134,6 +154,7 @@ function App() {
               {step === 2 && (
                 <Clarification 
                   question={currentQuestion} 
+                  symptomInfo={symptomInfo}
                   onSubmit={handleClarificationSubmit}
                   loading={loading}
                 />
@@ -141,7 +162,8 @@ function App() {
               
               {step === 3 && (
                 <Prescription 
-                  prescription={prescription} 
+                  prescription={prescription}
+                  symptomDetails={symptomDetails}
                   patientData={patientData} 
                   onReset={resetApp}
                 />

@@ -1,6 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function Prescription({ prescription, patientData, onReset }) {
+function Prescription({ prescription, symptomDetails, patientData, onReset }) {
+  const [showDetails, setShowDetails] = useState(false);
+  
+  const renderSymptomInfo = (info) => {
+    if (!info || Object.keys(info).length === 0) return "No additional information";
+    
+    return (
+      <ul className="mb-0 list-unstyled">
+        {Object.entries(info).map(([key, value], index) => (
+          <li key={index} className="mb-1">
+            <span className="fw-medium text-secondary text-capitalize">{key}:</span> {value}
+          </li>
+        ))}
+      </ul>
+    );
+  };
+  
   return (
     <div className="card">
       <div className="card-header bg-success text-white">
@@ -30,14 +46,44 @@ function Prescription({ prescription, patientData, onReset }) {
                 <span className="ms-2">{patientData?.age}</span>
               </div>
             </div>
-            <div className="col-12">
-              <div className="d-flex align-items-start">
-                <i className="bi bi-clipboard2-pulse text-secondary me-2 mt-1"></i>
-                <strong>Symptoms:</strong>
-                <span className="ms-2">{patientData?.symptoms}</span>
-              </div>
-            </div>
           </div>
+        </div>
+        
+        <div className="symptoms-info mb-4">
+          <div className="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+            <h4 className="d-flex align-items-center mb-0">
+              <i className="bi bi-clipboard2-pulse text-info me-2"></i>
+              Symptoms
+            </h4>
+            {symptomDetails?.length > 0 && (
+              <button 
+                className="btn btn-sm btn-outline-info" 
+                onClick={() => setShowDetails(!showDetails)}
+              >
+                {showDetails ? 'Hide Details' : 'Show Details'}
+              </button>
+            )}
+          </div>
+          
+          {!showDetails ? (
+            <div className="simple-symptoms">
+              <p className="mb-0">{patientData?.symptoms}</p>
+            </div>
+          ) : (
+            <div className="detailed-symptoms">
+              {symptomDetails?.map((detail, index) => (
+                <div key={index} className="symptom-detail mb-3 p-3 border rounded">
+                  <h5 className="d-flex align-items-center mb-3">
+                    <i className="bi bi-activity me-2 text-danger"></i>
+                    {detail.symptom}
+                  </h5>
+                  <div className="symptom-info ps-4">
+                    {renderSymptomInfo(detail.info)}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
         
         <div className="prescription-content mb-4">

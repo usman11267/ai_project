@@ -46,6 +46,8 @@ async def start_session(data: PatientData):
         "parent_symptoms": [None] * len(data.symptoms),
         "extra_info": [{} for _ in data.symptoms],
         "current_index": 0,
+        "followup_questions": [[] for _ in data.symptoms],
+        "followup_index": [0] * len(data.symptoms),
     }
     
     # Process the first step
@@ -61,7 +63,10 @@ async def start_session(data: PatientData):
         return {
             "session_id": session_id,
             "status": "needs_clarification",
-            "question": state["question"]
+            "question": state["question"],
+            "symptom": state["symptoms"][state["current_index"]],
+            "symptom_index": state["current_index"] + 1,
+            "total_symptoms": len(state["symptoms"])
         }
     
     # If no clarification needed, continue processing until prescription
@@ -86,7 +91,10 @@ async def start_session(data: PatientData):
                 return {
                     "session_id": session_id,
                     "status": "needs_clarification",
-                    "question": state["question"]
+                    "question": state["question"],
+                    "symptom": state["symptoms"][idx],
+                    "symptom_index": idx + 1,
+                    "total_symptoms": len(state["symptoms"])
                 }
         else:
             state["current_index"] += 1
@@ -107,23 +115,29 @@ async def answer_question(data: ClarificationAnswer):
     
     # Process the answer
     idx = state.get("current_index", 0)
-    if "how long" in state.get("question", "").lower():
+    question = state.get("question", "")
+    
+    if "how long" in question.lower() or "duration" in question.lower():
         # If it's a duration question
         state["extra_info"][idx]["duration"] = data.answer
-    else:
+    elif "severity" in question.lower():
+        state["extra_info"][idx]["severity"] = data.answer
+    elif "how often" in question.lower() or "frequency" in question.lower():
+        state["extra_info"][idx]["frequency"] = data.answer
+    elif "your symptom" in question.lower() and "please clarify" in question.lower():
         # If it's a symptom clarification
         parent = agent.semantic_net.find_parent(state["symptoms"][idx]) or state["symptoms"][idx]
         state["parent_symptoms"][idx] = parent
         state["symptoms"][idx] = data.answer
+    else:
+        # Generic storage for other questions
+        question_key = question.lower().replace("?", "").strip()
+        state["extra_info"][idx][question_key] = data.answer
     
     # Update history
     state["history"].append(state["question"])
     state["history"].append(data.answer)
     state["question"] = None
-    
-    # Check if clarified
-    if state["clarified"][idx]:
-        state["current_index"] += 1
     
     # Process next step
     state = agent.app.invoke(state)
@@ -134,8 +148,16 @@ async def answer_question(data: ClarificationAnswer):
         return {
             "session_id": data.session_id,
             "status": "needs_clarification",
-            "question": state["question"]
+            "question": state["question"],
+            "symptom": state["symptoms"][idx],
+            "symptom_index": idx + 1,
+            "total_symptoms": len(state["symptoms"])
         }
+    
+    # Check if current symptom is clarified
+    if state["clarified"][idx]:
+        state["current_index"] += 1
+        sessions[data.session_id] = state
     
     # Continue processing until prescription
     while True:
@@ -143,12 +165,23 @@ async def answer_question(data: ClarificationAnswer):
         if idx >= len(state.get("symptoms", [])):
             state = agent.app.invoke(state)
             if state.get("prescription"):
+                # Include symptom details in the response
+                symptom_details = []
+                for i, symptom in enumerate(state["symptoms"]):
+                    details = {
+                        "symptom": symptom,
+                        "info": state["extra_info"][i] if i < len(state["extra_info"]) else {}
+                    }
+                    symptom_details.append(details)
+                
                 # Clean up the session
                 if data.session_id in sessions:
                     del sessions[data.session_id]
+                
                 return {
                     "status": "complete",
-                    "prescription": state["prescription"]
+                    "prescription": state["prescription"],
+                    "symptom_details": symptom_details
                 }
             continue
         
@@ -159,7 +192,10 @@ async def answer_question(data: ClarificationAnswer):
                 return {
                     "session_id": data.session_id,
                     "status": "needs_clarification",
-                    "question": state["question"]
+                    "question": state["question"],
+                    "symptom": state["symptoms"][idx],
+                    "symptom_index": idx + 1,
+                    "total_symptoms": len(state["symptoms"])
                 }
             continue
         else:
@@ -184,6 +220,8 @@ async def get_prescription(data: PatientData):
         "parent_symptoms": [None] * len(data.symptoms),
         "extra_info": [{} for _ in data.symptoms],
         "current_index": 0,
+        "followup_questions": [[] for _ in data.symptoms],
+        "followup_index": [0] * len(data.symptoms),
     }
 
     while True:
