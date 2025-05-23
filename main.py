@@ -1,10 +1,16 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Body
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional, Dict, Union, Any
 import agent
+import uuid
+from fastapi.responses import JSONResponse
 
-app = FastAPI()
+app = FastAPI(
+    title="Doctor AI API",
+    description="API for the Doctor AI LangGraph Agent",
+    version="1.0.0"
+)
 
 # Add CORS middleware
 app.add_middleware(
@@ -28,8 +34,58 @@ class SessionState(BaseModel):
     state: Dict
     session_id: str
 
+class SymptomRequest(BaseModel):
+    symptom: str
+
 # Store session states
 sessions = {}
+
+@app.get("/")
+async def root():
+    """Health check endpoint."""
+    return {"status": "online", "message": "Doctor AI API is running"}
+
+@app.get("/symptoms/categories")
+async def get_symptom_categories():
+    """Get all symptom categories from the semantic network."""
+    return {"categories": list(agent.semantic_net.net.keys())}
+
+@app.get("/symptoms/{category}")
+async def get_symptoms_by_category(category: str):
+    """Get specific symptoms for a category."""
+    if category in agent.semantic_net.net:
+        return {"category": category, "symptoms": agent.semantic_net.net[category]}
+    raise HTTPException(status_code=404, detail=f"Category '{category}' not found")
+
+@app.get("/symptoms/followup/{symptom}")
+async def get_followup_questions(symptom: str):
+    """Get follow-up questions for a specific symptom."""
+    followup_questions = agent.semantic_net.get_followup_questions(symptom)
+    if followup_questions:
+        return {"symptom": symptom, "questions": followup_questions}
+    return {"symptom": symptom, "questions": []}
+
+@app.post("/symptoms/closest")
+async def find_closest_symptom(data: SymptomRequest):
+    """Find the closest symptom in the semantic network."""
+    closest = agent.semantic_net.find_closest_symptom(data.symptom)
+    if closest:
+        return {"input": data.symptom, "closest_match": closest}
+    return {"input": data.symptom, "closest_match": None}
+
+@app.get("/medicines")
+async def get_medicines():
+    """Get a list of all available medicines."""
+    medicines = agent.df["Medicine_Name"].unique().tolist()
+    return {"medicines": medicines}
+
+@app.get("/medicines/{medicine_name}")
+async def get_medicine_details(medicine_name: str):
+    """Get details for a specific medicine."""
+    medicine_data = agent.df[agent.df["Medicine_Name"] == medicine_name]
+    if not medicine_data.empty:
+        return {"medicine": medicine_data.iloc[0].to_dict()}
+    raise HTTPException(status_code=404, detail=f"Medicine '{medicine_name}' not found")
 
 @app.post("/start_session/")
 async def start_session(data: PatientData):
@@ -56,7 +112,6 @@ async def start_session(data: PatientData):
     state = agent.app.invoke(state)
     
     # Generate a session ID
-    import uuid
     session_id = str(uuid.uuid4())
     sessions[session_id] = state
     
@@ -84,7 +139,8 @@ async def start_session(data: PatientData):
                     del sessions[session_id]
                 return {
                     "status": "complete",
-                    "prescription": state["prescription"]
+                    "prescription": state["prescription"],
+                    "matched_medicines": state.get("matched_medicines", [])
                 }
             continue
         
@@ -180,7 +236,8 @@ async def answer_question(data: ClarificationAnswer):
                 for i, symptom in enumerate(state["symptoms"]):
                     details = {
                         "symptom": symptom,
-                        "info": state["extra_info"][i] if i < len(state["extra_info"]) else {}
+                        "info": state["extra_info"][i] if i < len(state["extra_info"]) else {},
+                        "medicine": state["matched_medicines"][i] if i < len(state["matched_medicines"]) else {}
                     }
                     symptom_details.append(details)
                 
@@ -217,9 +274,33 @@ async def answer_question(data: ClarificationAnswer):
     # This should not be reached
     raise HTTPException(status_code=500, detail="Failed to process request")
 
+@app.get("/session/{session_id}")
+async def get_session_state(session_id: str):
+    """Get the current state of a session (for debugging)."""
+    if session_id not in sessions:
+        raise HTTPException(status_code=404, detail="Session not found")
+    
+    return {
+        "session_id": session_id,
+        "current_index": sessions[session_id].get("current_index", 0),
+        "symptoms": sessions[session_id].get("symptoms", []),
+        "clarified": sessions[session_id].get("clarified", []),
+        "has_prescription": sessions[session_id].get("prescription") is not None
+    }
+
+@app.delete("/session/{session_id}")
+async def delete_session(session_id: str):
+    """Delete a session."""
+    if session_id not in sessions:
+        raise HTTPException(status_code=404, detail="Session not found")
+    
+    del sessions[session_id]
+    return {"status": "success", "message": f"Session {session_id} deleted"}
+
 # Keep the original endpoint for backward compatibility
 @app.post("/get_prescription/")
 async def get_prescription(data: PatientData):
+    """Legacy endpoint for getting prescriptions without the interactive Q&A flow."""
     state = {
         "symptoms": data.symptoms,
         "clarified": [False] * len(data.symptoms),
@@ -262,4 +343,8 @@ async def get_prescription(data: PatientData):
         else:
             state["current_index"] += 1
 
-    raise HTTPException(status_code=500, detail="Failed to generate prescription") 
+    raise HTTPException(status_code=500, detail="Failed to generate prescription")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000) 
