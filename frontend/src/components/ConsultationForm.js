@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { startConsultation, fetchSymptomCategories, fetchSymptomsByCategory } from '../services/api';
-import '../styles/ConsultationForm.css';
 
 const ConsultationForm = ({ onConsultationStart }) => {
   const [patientName, setPatientName] = useState('');
@@ -88,6 +87,12 @@ const ConsultationForm = ({ onConsultationStart }) => {
       };
 
       const result = await startConsultation(patientData);
+      // Add patient data to the result for later use
+      result.patientData = {
+        name: patientName,
+        age: patientAge,
+        symptoms: selectedSymptoms.join(', ')
+      };
       onConsultationStart(result);
     } catch (err) {
       setError('Failed to start consultation. Please try again.');
@@ -98,118 +103,157 @@ const ConsultationForm = ({ onConsultationStart }) => {
   };
 
   return (
-    <div className="consultation-form">
-      <h2>New Consultation</h2>
+    <div className="card">
+      <div className="card-header bg-primary text-white">
+        <h3 className="mb-0 d-flex align-items-center">
+          <i className="bi bi-person-plus-fill me-2"></i>
+          New Patient Consultation
+        </h3>
+      </div>
       
-      {error && (
-        <div className="error-message">
-          {error}
-        </div>
-      )}
-
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="patientName">Patient Name:</label>
-          <input
-            type="text"
-            id="patientName"
-            value={patientName}
-            onChange={(e) => setPatientName(e.target.value)}
-            placeholder="Enter patient name"
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="patientAge">Patient Age:</label>
-          <input
-            type="number"
-            id="patientAge"
-            value={patientAge}
-            onChange={(e) => setPatientAge(e.target.value)}
-            placeholder="Enter patient age"
-            min="0"
-            max="120"
-          />
-        </div>
-
-        <div className="form-group">
-          <label>Symptoms:</label>
-          <div className="symptom-input-container">
-            <input
-              type="text"
-              value={symptomText}
-              onChange={(e) => setSymptomText(e.target.value)}
-              placeholder="Enter a symptom"
-            />
-            <button
-              type="button"
-              onClick={addSymptom}
-              className="add-symptom-btn"
-            >
-              Add
-            </button>
-          </div>
-        </div>
-
-        <div className="form-group">
-          <label>Select from common symptoms:</label>
-          <select 
-            value={selectedCategory} 
-            onChange={(e) => setSelectedCategory(e.target.value)}
-          >
-            <option value="">-- Select a category --</option>
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category.charAt(0).toUpperCase() + category.slice(1)}
-              </option>
-            ))}
-          </select>
-          
-          {selectedCategory && (
-            <div className="available-symptoms">
-              {availableSymptoms.map((symptom) => (
-                <button
-                  key={symptom}
-                  type="button"
-                  onClick={() => addSymptomFromList(symptom)}
-                  className="symptom-btn"
-                >
-                  {symptom}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {selectedSymptoms.length > 0 && (
-          <div className="selected-symptoms">
-            <h3>Selected Symptoms:</h3>
-            <ul>
-              {selectedSymptoms.map((symptom, index) => (
-                <li key={index}>
-                  {symptom}
-                  <button 
-                    type="button" 
-                    onClick={() => removeSymptom(index)}
-                    className="remove-btn"
-                  >
-                    ✕
-                  </button>
-                </li>
-              ))}
-            </ul>
+      <div className="card-body p-4">
+        {error && (
+          <div className="alert alert-danger" role="alert">
+            <i className="bi bi-exclamation-triangle-fill me-2"></i>
+            {error}
           </div>
         )}
 
-        <button
-          type="submit"
-          className="submit-btn"
-          disabled={isLoading || selectedSymptoms.length === 0}
-        >
-          {isLoading ? "Loading..." : "Start Consultation"}
-        </button>
-      </form>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="patientName" className="form-label">
+              <i className="bi bi-person me-2 text-primary"></i>
+              Patient Name
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="patientName"
+              value={patientName}
+              onChange={(e) => setPatientName(e.target.value)}
+              placeholder="Enter patient name"
+              required
+            />
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="patientAge" className="form-label">
+              <i className="bi bi-calendar3 me-2 text-primary"></i>
+              Patient Age
+            </label>
+            <input
+              type="number"
+              className="form-control"
+              id="patientAge"
+              value={patientAge}
+              onChange={(e) => setPatientAge(e.target.value)}
+              placeholder="Enter patient age"
+              min="0"
+              max="120"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="form-label">
+              <i className="bi bi-clipboard2-pulse me-2 text-primary"></i>
+              Symptoms
+            </label>
+            <div className="input-group mb-3">
+              <input
+                type="text"
+                className="form-control"
+                value={symptomText}
+                onChange={(e) => setSymptomText(e.target.value)}
+                placeholder="Type a symptom"
+                aria-label="Symptom"
+              />
+              <button
+                type="button"
+                className="btn btn-outline-primary"
+                onClick={addSymptom}
+                disabled={!symptomText.trim()}
+              >
+                <i className="bi bi-plus-lg"></i> Add
+              </button>
+            </div>
+          </div>
+
+          <div className="mb-4">
+            <label className="form-label">
+              <i className="bi bi-list-check me-2 text-primary"></i>
+              Select from common symptoms
+            </label>
+            <select 
+              className="form-select mb-3"
+              value={selectedCategory} 
+              onChange={(e) => setSelectedCategory(e.target.value)}
+            >
+              <option value="">-- Select a category --</option>
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                </option>
+              ))}
+            </select>
+            
+            {selectedCategory && (
+              <div className="d-flex flex-wrap gap-2 mt-2">
+                {availableSymptoms.map((symptom) => (
+                  <button
+                    key={symptom}
+                    type="button"
+                    onClick={() => addSymptomFromList(symptom)}
+                    className="btn btn-sm btn-outline-secondary"
+                  >
+                    {symptom} <i className="bi bi-plus-circle-fill ms-1"></i>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {selectedSymptoms.length > 0 && (
+            <div className="mb-4">
+              <label className="form-label">
+                <i className="bi bi-card-checklist me-2 text-success"></i>
+                Selected Symptoms:
+              </label>
+              <div className="list-group">
+                {selectedSymptoms.map((symptom, index) => (
+                  <div key={index} className="list-group-item d-flex justify-content-between align-items-center">
+                    <span>{symptom}</span>
+                    <button 
+                      type="button" 
+                      onClick={() => removeSymptom(index)}
+                      className="btn btn-sm btn-outline-danger rounded-circle"
+                    >
+                      <i className="bi bi-x"></i>
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <button
+            type="submit"
+            className="btn btn-primary w-100 py-2"
+            disabled={isLoading || selectedSymptoms.length === 0}
+          >
+            {isLoading ? (
+              <>
+                <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                Processing...
+              </>
+            ) : (
+              <>
+                <i className="bi bi-arrow-right-circle-fill me-2"></i>
+                Start Consultation
+              </>
+            )}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
