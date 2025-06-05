@@ -38,20 +38,17 @@ class SemanticNet:
         
         # Common follow-up questions for all symptoms with input type info
         self.common_followups = {
-            "severity": {
-                "question": "How would you rate the severity of your {} on a scale of 1-10?",
+            "combined_assessment": {
+                "question": "For your symptoms, please indicate:",
                 "input_type": "checkbox",
-                "options": ["1 (Very Mild)", "2", "3", "4", "5 (Moderate)", "6", "7", "8", "9", "10 (Severe)"]
-            },
-            "duration": {
-                "question": "How long have you had this {}?",
-                "input_type": "checkbox",
-                "options": ["Less than a day", "1-3 days", "3-7 days", "1-2 weeks", "2-4 weeks", "Over a month"]
-            },
-            "frequency": {
-                "question": "How often do you experience this {}?",
-                "input_type": "checkbox",
-                "options": ["Constantly", "Several times a day", "Once daily", "Several times a week", "Once a week", "Occasionally"]
+                "options": [
+                    "Mild and occasional, started recently (less than a week)",
+                    "Mild and occasional, ongoing for more than a week",
+                    "Moderate and daily, started recently (less than a week)",
+                    "Moderate and daily, ongoing for more than a week",
+                    "Severe and constant, started recently (less than a week)",
+                    "Severe and constant, ongoing for more than a week"
+                ]
             }
         }
         
@@ -656,7 +653,14 @@ if __name__ == "__main__":
                     answer = input("📝 Your answer: ").strip().lower()
                 
                 # Store the answer appropriately based on the question type
-                if "how long" in state["question"].lower() or "duration" in state["question"].lower():
+                if state["question"] == "For your symptoms, please indicate:":
+                    # Combined follow-up for all symptoms
+                    for i in range(len(symptoms)):
+                        if "recently" in answer or "week" in answer:
+                            state["extra_info"][i]["duration"] = answer
+                        if "mild" in answer or "moderate" in answer or "severe" in answer:
+                            state["extra_info"][i]["severity_frequency"] = answer
+                elif "how long" in state["question"].lower() or "duration" in state["question"].lower():
                     state["extra_info"][idx]["duration"] = answer
                 elif "severity" in state["question"].lower():
                     state["extra_info"][idx]["severity"] = answer
