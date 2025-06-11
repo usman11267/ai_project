@@ -15,9 +15,8 @@ An AI-powered application that assists patients by providing medicine suggestion
 - Python
 - LangGraph
 - Gemini/OpenAI API
-- Vector Database (e.g., Pinecone or ChromaDB)
 - Flask / FastAPI (for backend API)
-- Blazor Server (planned for frontend integration)
+- react for fronted
 - Git & GitHub
 
 ## 📦 Installation
@@ -63,39 +62,10 @@ An AI-powered application that assists patients by providing medicine suggestion
   }
   ```
 
-## 📁 Project Structure
-
-```
-ai_project/
-│
-├── app.py                # Main entry point
-├── ai_engine/            # Core AI processing logic
-├── database/             # Vector database interaction
-├── models/               # Data models and schema
-├── static/               # Static files (if any)
-├── templates/            # UI templates (for web version)
-├── requirements.txt      # Python dependencies
-└── README.md             # Project documentation
-```
-
-## 🧠 Future Improvements
-
-- Integrate with hospital systems via API
-- Doctor and admin dashboards
-- Patient mobile app (Flutter)
-- AI learning from doctor feedback (Agentic AI)
-- HIPAA-compliant data storage
-
-## 📄 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## 🤝 Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ---
 
-**Developed by Muhammad Usman**  
-📧 Email: your_email@example.com  
+**Developed by Muhammad Usman**   
 🌐 GitHub: [usman11267](https://github.com/usman11267)
