@@ -2,7 +2,7 @@
 echo Starting Doctor AI API and Frontend...
 
 REM Start the FastAPI server in a new window
-start cmd /k "python main.py"
+start cmd /k "python -m uvicorn main:app --reload"
 
 REM Start the React development server in a new window
 start cmd /k "cd frontend && npm start"
