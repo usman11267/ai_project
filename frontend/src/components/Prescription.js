@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-function Prescription({ prescription, symptomDetails, patientData, onReset }) {
+const Prescription = ({ result, patientData, onNewConsultation }) => {
+  const { prescription, symptom_details = [] } = result;
   const [showDetails, setShowDetails] = useState(false);
   
   const renderSymptomInfo = (info) => {
@@ -16,7 +17,7 @@ function Prescription({ prescription, symptomDetails, patientData, onReset }) {
       </ul>
     );
   };
-  
+
   return (
     <div className="card">
       <div className="card-header bg-success text-white">
@@ -55,7 +56,7 @@ function Prescription({ prescription, symptomDetails, patientData, onReset }) {
               <i className="bi bi-clipboard2-pulse text-info me-2"></i>
               Symptoms
             </h4>
-            {symptomDetails?.length > 0 && (
+            {symptom_details?.length > 0 && (
               <button 
                 className="btn btn-sm btn-outline-info" 
                 onClick={() => setShowDetails(!showDetails)}
@@ -64,14 +65,14 @@ function Prescription({ prescription, symptomDetails, patientData, onReset }) {
               </button>
             )}
           </div>
-          
+
           {!showDetails ? (
             <div className="simple-symptoms">
               <p className="mb-0">{patientData?.symptoms}</p>
             </div>
           ) : (
             <div className="detailed-symptoms">
-              {symptomDetails?.map((detail, index) => (
+              {symptom_details?.map((detail, index) => (
                 <div key={index} className="symptom-detail mb-3 p-3 border rounded">
                   <h5 className="d-flex align-items-center mb-3">
                     <i className="bi bi-activity me-2 text-danger"></i>
@@ -80,6 +81,29 @@ function Prescription({ prescription, symptomDetails, patientData, onReset }) {
                   <div className="symptom-info ps-4">
                     {renderSymptomInfo(detail.info)}
                   </div>
+                  {detail.medicine && Object.keys(detail.medicine).length > 0 && (
+                    <div className="medicine-info mt-3 pt-3 border-top">
+                      <h6 className="d-flex align-items-center mb-2">
+                        <i className="bi bi-capsule me-2 text-primary"></i>
+                        Recommended Medicine:
+                      </h6>
+                      <div className="ps-4">
+                        <div className="mb-1"><strong>Name:</strong> {detail.medicine.Medicine_Name}</div>
+                        <div className="mb-1"><strong>Type:</strong> {detail.medicine.Medicine_Type}</div>
+                        {detail.medicine.Common_Side_Effects && (
+                          <div className="mb-1"><strong>Side Effects:</strong> {detail.medicine.Common_Side_Effects}</div>
+                        )}
+                        {detail.medicine.Prescription_Required && (
+                          <div className="mb-1">
+                            <strong>Prescription Required:</strong> 
+                            <span className={detail.medicine.Prescription_Required === 'Yes' ? 'text-danger' : 'text-success'}>
+                              {' '}{detail.medicine.Prescription_Required}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -100,7 +124,7 @@ function Prescription({ prescription, symptomDetails, patientData, onReset }) {
             </pre>
           </div>
         </div>
-        
+
         <div className="disclaimer mb-4 p-3 border-start border-warning border-4 bg-light rounded">
           <h5 className="d-flex align-items-center text-warning mb-2">
             <i className="bi bi-exclamation-triangle-fill me-2"></i>
@@ -113,9 +137,9 @@ function Prescription({ prescription, symptomDetails, patientData, onReset }) {
         </div>
         
         <div className="d-flex flex-wrap gap-2">
-          <button
+          <button 
             className="btn btn-primary"
-            onClick={onReset}
+            onClick={onNewConsultation}
           >
             <i className="bi bi-arrow-counterclockwise me-2"></i>
             Start Over
@@ -147,6 +171,6 @@ function Prescription({ prescription, symptomDetails, patientData, onReset }) {
       </div>
     </div>
   );
-}
+};
 
 export default Prescription; 

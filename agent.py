@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 from langgraph.graph import StateGraph, END
-from typing import TypedDict, Optional, List, Dict
+from typing import TypedDict, Optional, List, Dict, Any, Tuple, Union
 import google.generativeai as genai
 
 # --- Gemini Configuration ---
@@ -36,27 +36,168 @@ class SemanticNet:
         }
         self.child_to_parent = {child: parent for parent, children in self.net.items() for child in children}
         
-        # Common follow-up questions for all symptoms
+        # Common follow-up questions for all symptoms with input type info
         self.common_followups = {
-            "severity": "How would you rate the severity of your {} on a scale of 1-10?",
-            "duration": "How long have you had this {}?",
-            "frequency": "How often do you experience this {}?"
+            "combined_assessment": {
+                "question": "For your symptoms, please indicate:",
+                "input_type": "checkbox",
+                "options": [
+                    "Mild and occasional, started recently (less than a week)",
+                    "Mild and occasional, ongoing for more than a week",
+                    "Moderate and daily, started recently (less than a week)",
+                    "Moderate and daily, ongoing for more than a week",
+                    "Severe and constant, started recently (less than a week)",
+                    "Severe and constant, ongoing for more than a week"
+                ]
+            }
         }
         
-        # Specific follow-up questions for certain symptoms
+        # Specific follow-up questions for certain symptoms with input type info
         self.specific_followups = {
-            "headache": ["Is it on one side or both sides?", "Does it throb or is it a steady pain?"],
-            "fever": ["Have you taken any medication to reduce it?", "Are you experiencing chills or sweating?"],
-            "cough": ["Is there any phlegm or mucus?", "Is it worse at night?"],
-            "rash": ["Is it itchy?", "Has the rash spread since it first appeared?"],
-            "stomachache": ["Is it related to eating?", "Does it come and go or is it constant?"],
-            "pain": ["Does anything make it better or worse?", "Does it radiate to other areas?"],
-            "dizziness": ["Does it happen when you stand up?", "Is it associated with nausea?"],
-            "breathing": ["Does it occur at rest or with activity?", "Do you have a history of respiratory conditions?"],
-            "insomnia": ["Do you feel tired during the day?", "What time do you typically go to bed?"],
-            "allergy": ["Have you been exposed to any new substances?", "Do you have any known allergies?"],
-            "diarrhea": ["Is there blood in your stool?", "Are you experiencing abdominal pain?"],
-            "cold": ["Do you have a sore throat?", "Are you experiencing body aches?"]
+            "headache": [
+                {
+                    "question": "Is it on one side or both sides?",
+                    "input_type": "checkbox",
+                    "options": ["One side", "Both sides", "Varies"]
+                },
+                {
+                    "question": "Does it throb or is it a steady pain?",
+                    "input_type": "checkbox",
+                    "options": ["Throbbing", "Steady", "Both"]
+                }
+            ],
+            "fever": [
+                {
+                    "question": "Have you taken any medication to reduce it?",
+                    "input_type": "checkbox",
+                    "options": ["Yes", "No"]
+                },
+                {
+                    "question": "Are you experiencing chills or sweating?",
+                    "input_type": "checkbox",
+                    "options": ["Chills", "Sweating", "Both", "Neither"]
+                }
+            ],
+            "cough": [
+                {
+                    "question": "Is there any phlegm or mucus?",
+                    "input_type": "checkbox",
+                    "options": ["Yes, clear phlegm", "Yes, colored phlegm", "No phlegm"]
+                },
+                {
+                    "question": "Is it worse at night?",
+                    "input_type": "checkbox",
+                    "options": ["Yes", "No", "Not sure"]
+                }
+            ],
+            "rash": [
+                {
+                    "question": "Is it itchy?",
+                    "input_type": "checkbox",
+                    "options": ["Very itchy", "Mildly itchy", "Not itchy"]
+                },
+                {
+                    "question": "Has the rash spread since it first appeared?",
+                    "input_type": "checkbox",
+                    "options": ["Yes, significantly", "Yes, slightly", "No"]
+                }
+            ],
+            "stomachache": [
+                {
+                    "question": "Is it related to eating?",
+                    "input_type": "checkbox",
+                    "options": ["Yes, worse after eating", "Yes, better after eating", "Not related to eating"]
+                },
+                {
+                    "question": "Does it come and go or is it constant?",
+                    "input_type": "checkbox",
+                    "options": ["Comes and goes", "Constant", "Varies"]
+                }
+            ],
+            "pain": [
+                {
+                    "question": "Does anything make it better or worse?",
+                    "input_type": "checkbox",
+                    "options": ["Rest makes it better", "Movement makes it better", "Medication helps", "Nothing helps", "Not sure"]
+                },
+                {
+                    "question": "Does it radiate to other areas?",
+                    "input_type": "checkbox",
+                    "options": ["Yes", "No", "Sometimes"]
+                }
+            ],
+            "dizziness": [
+                {
+                    "question": "Does it happen when you stand up?",
+                    "input_type": "checkbox",
+                    "options": ["Yes", "No", "Sometimes"]
+                },
+                {
+                    "question": "Is it associated with nausea?",
+                    "input_type": "checkbox",
+                    "options": ["Yes", "No", "Sometimes"]
+                }
+            ],
+            "breathing": [
+                {
+                    "question": "Does it occur at rest or with activity?",
+                    "input_type": "checkbox",
+                    "options": ["Only with activity", "At rest", "Both"]
+                },
+                {
+                    "question": "Do you have a history of respiratory conditions?",
+                    "input_type": "checkbox",
+                    "options": ["Yes, asthma", "Yes, COPD", "Yes, other", "No"]
+                }
+            ],
+            "insomnia": [
+                {
+                    "question": "Do you feel tired during the day?",
+                    "input_type": "checkbox",
+                    "options": ["Yes, very tired", "Somewhat tired", "Not particularly"]
+                },
+                {
+                    "question": "What time do you typically go to bed?",
+                    "input_type": "checkbox",
+                    "options": ["Before 10pm", "10pm-12am", "After midnight", "Irregular"]
+                }
+            ],
+            "allergy": [
+                {
+                    "question": "Have you been exposed to any new substances?",
+                    "input_type": "checkbox",
+                    "options": ["Yes", "No", "Not sure"]
+                },
+                {
+                    "question": "Do you have any known allergies?",
+                    "input_type": "checkbox",
+                    "options": ["Yes, food allergies", "Yes, seasonal allergies", "Yes, medication allergies", "No known allergies"]
+                }
+            ],
+            "diarrhea": [
+                {
+                    "question": "Is there blood in your stool?",
+                    "input_type": "checkbox",
+                    "options": ["Yes", "No", "Not sure"]
+                },
+                {
+                    "question": "Are you experiencing abdominal pain?",
+                    "input_type": "checkbox",
+                    "options": ["Severe pain", "Mild pain", "No pain"]
+                }
+            ],
+            "cold": [
+                {
+                    "question": "Do you have a sore throat?",
+                    "input_type": "checkbox",
+                    "options": ["Yes, severe", "Yes, mild", "No"]
+                },
+                {
+                    "question": "Are you experiencing body aches?",
+                    "input_type": "checkbox",
+                    "options": ["Yes", "No", "Mild aches"]
+                }
+            ]
         }
 
     def is_vague(self, symptom: str) -> bool:
@@ -83,8 +224,8 @@ class SemanticNet:
                 return known
         return None
         
-    def get_followup_questions(self, symptom: str) -> List[str]:
-        """Get follow-up questions for a specific symptom"""
+    def get_followup_questions(self, symptom: str) -> List[Dict[str, Any]]:
+        """Get follow-up questions with their input types and options for a specific symptom"""
         questions = []
         
         # Add symptom-specific questions if available
@@ -92,12 +233,35 @@ class SemanticNet:
         if key in self.specific_followups:
             questions.extend(self.specific_followups[key])
         
-        # Add duration question if not already added
-        duration_q = self.common_followups["duration"].format(symptom)
-        if duration_q not in questions:
-            questions.append(duration_q)
+        # Add common followup questions if not already added
+        for key, followup in self.common_followups.items():
+            question_text = followup["question"].format(symptom)
+            existing_questions = [q["question"] for q in questions]
+            
+            if question_text not in existing_questions:
+                questions.append({
+                    "question": question_text,
+                    "input_type": followup["input_type"],
+                    "options": followup["options"]
+                })
             
         return questions
+        
+    def clarification_for_vague_symptom(self, symptom: str) -> Dict[str, Any]:
+        """Get clarification options for a vague symptom"""
+        if not self.is_vague(symptom):
+            return {
+                "question": f"Please provide more details about your {symptom}",
+                "input_type": "text",
+                "options": []
+            }
+            
+        options = self.get_children(symptom)
+        return {
+            "question": f"Your symptom '{symptom}' is broad. Please clarify:",
+            "input_type": "checkbox",
+            "options": options
+        }
 
 semantic_net = SemanticNet()
 
@@ -110,11 +274,13 @@ class AgentState(TypedDict):
     matched_medicines: List[Dict]
     prescription: Optional[str]
     question: Optional[str]
+    input_type: Optional[str]
+    options: List[str]
     history: List[str]
     parent_symptoms: List[Optional[str]]
     extra_info: List[Dict[str, str]]
     current_index: int
-    followup_questions: List[List[str]]  # New field to track follow-up questions for each symptom
+    followup_questions: List[List[Dict[str, Any]]]  # New field to track follow-up questions for each symptom
     followup_index: List[int]  # New field to track which follow-up question we're on
 
 # --- Node: Clarify Symptom ---
@@ -145,8 +311,9 @@ def clarify_symptom(state: AgentState) -> AgentState:
     
     # First check if the symptom is vague (e.g., 'pain', 'cough')
     if not clarified[idx] and semantic_net.is_vague(symptom):
-        options = semantic_net.get_children(symptom)
-        question = f"Your symptom '{symptom}' is broad. Please clarify: {', '.join(options)}"
+        clarification = semantic_net.clarification_for_vague_symptom(symptom)
+        question = clarification["question"]
+        
         if question in history:
             # If we've already asked about the vague symptom, move to follow-up questions
             if not state["followup_questions"][idx]:
@@ -154,12 +321,14 @@ def clarify_symptom(state: AgentState) -> AgentState:
             
             if state["followup_index"][idx] < len(state["followup_questions"][idx]):
                 # Ask the next follow-up question
-                next_question = state["followup_questions"][idx][state["followup_index"][idx]]
+                next_question_obj = state["followup_questions"][idx][state["followup_index"][idx]]
                 state["followup_index"][idx] += 1
                 return {
                     **state,
-                    "question": next_question,
-                    "history": history + [next_question]
+                    "question": next_question_obj["question"],
+                    "input_type": next_question_obj["input_type"],
+                    "options": next_question_obj["options"],
+                    "history": history + [next_question_obj["question"]]
                 }
             else:
                 # No more questions, mark as clarified
@@ -168,8 +337,10 @@ def clarify_symptom(state: AgentState) -> AgentState:
         
         return {
             **state,
-            "question": question,
-            "history": history + [question]
+            "question": clarification["question"],
+            "input_type": clarification["input_type"],
+            "options": clarification["options"],
+            "history": history + [clarification["question"]]
         }
 
     # If not a vague symptom, prepare follow-up questions
@@ -178,12 +349,14 @@ def clarify_symptom(state: AgentState) -> AgentState:
     
     # Ask follow-up questions in sequence
     if state["followup_index"][idx] < len(state["followup_questions"][idx]):
-        next_question = state["followup_questions"][idx][state["followup_index"][idx]]
+        next_question_obj = state["followup_questions"][idx][state["followup_index"][idx]]
         state["followup_index"][idx] += 1
         return {
             **state,
-            "question": next_question,
-            "history": history + [next_question]
+            "question": next_question_obj["question"],
+            "input_type": next_question_obj["input_type"],
+            "options": next_question_obj["options"],
+            "history": history + [next_question_obj["question"]]
         }
 
     clarified[idx] = True
@@ -220,15 +393,123 @@ def inference_engine(state: AgentState) -> AgentState:
         if not match.empty:
             medicine = match.sample(1).iloc[0].to_dict()
         else:
+            # Try to find the closest symptom
             closest = semantic_net.find_closest_symptom(symptom)
             match = df[df["Symptom"].str.lower() == closest] if closest else pd.DataFrame()
-            medicine = match.sample(1).iloc[0].to_dict() if not match.empty else {
-                "Symptom": symptom.title(),
-                "Medicine_Name": "Paracetamol",
-                "Medicine_Type": "Tablet",
-                "Common_Side_Effects": "Nausea, liver issues if overused",
-                "Prescription_Required": "No"
-            }
+            
+            # If no match found, try to recommend based on symptom category
+            if match.empty:
+                # Get the parent category if it exists
+                parent_category = None
+                for parent, children in semantic_net.net.items():
+                    if symptom in children:
+                        parent_category = parent
+                        break
+                
+                # Find medicines for this category
+                if parent_category:
+                    category_matches = []
+                    for child in semantic_net.net.get(parent_category, []):
+                        category_match = df[df["Symptom"].str.lower() == child.lower()]
+                        if not category_match.empty:
+                            category_matches.append(category_match)
+                    
+                    if category_matches:
+                        # Get a random medicine from one of the related symptoms
+                        import random
+                        match = random.choice(category_matches)
+                
+            # If still no match, use a varied default based on first letter of symptom
+            if match.empty:
+                first_letter = symptom[0].lower() if symptom else 'a'
+                
+                # Map first letter to different default medicines
+                default_medicines = {
+                    'a': {"Medicine_Name": "Aspirin", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Stomach irritation, increased risk of bleeding", 
+                          "Prescription_Required": "No"},
+                    'b': {"Medicine_Name": "Buscopan", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Dry mouth, blurred vision", 
+                          "Prescription_Required": "No"},
+                    'c': {"Medicine_Name": "Cetirizine", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Drowsiness, dry mouth", 
+                          "Prescription_Required": "No"},
+                    'd': {"Medicine_Name": "Diclofenac", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Stomach upset, headache", 
+                          "Prescription_Required": "Yes"},
+                    'e': {"Medicine_Name": "Esomeprazole", "Medicine_Type": "Capsule", 
+                          "Common_Side_Effects": "Headache, nausea", 
+                          "Prescription_Required": "Yes"},
+                    'f': {"Medicine_Name": "Fluconazole", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Nausea, headache", 
+                          "Prescription_Required": "Yes"},
+                    'g': {"Medicine_Name": "Gabapentin", "Medicine_Type": "Capsule", 
+                          "Common_Side_Effects": "Dizziness, drowsiness", 
+                          "Prescription_Required": "Yes"},
+                    'h': {"Medicine_Name": "Hydrocortisone", "Medicine_Type": "Cream", 
+                          "Common_Side_Effects": "Skin irritation, itching", 
+                          "Prescription_Required": "No"},
+                    'i': {"Medicine_Name": "Ibuprofen", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Stomach upset, heartburn", 
+                          "Prescription_Required": "No"},
+                    'j': {"Medicine_Name": "Jardiance", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Urinary tract infections, hypoglycemia", 
+                          "Prescription_Required": "Yes"},
+                    'k': {"Medicine_Name": "Ketorolac", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Stomach pain, dizziness", 
+                          "Prescription_Required": "Yes"},
+                    'l': {"Medicine_Name": "Loratadine", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Headache, dry mouth", 
+                          "Prescription_Required": "No"},
+                    'm': {"Medicine_Name": "Metformin", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Stomach upset, diarrhea", 
+                          "Prescription_Required": "Yes"},
+                    'n': {"Medicine_Name": "Naproxen", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Stomach upset, drowsiness", 
+                          "Prescription_Required": "No"},
+                    'o': {"Medicine_Name": "Omeprazole", "Medicine_Type": "Capsule", 
+                          "Common_Side_Effects": "Headache, stomach pain", 
+                          "Prescription_Required": "No"},
+                    'p': {"Medicine_Name": "Paracetamol", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Nausea, liver issues if overused", 
+                          "Prescription_Required": "No"},
+                    'q': {"Medicine_Name": "Quetiapine", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Drowsiness, dizziness", 
+                          "Prescription_Required": "Yes"},
+                    'r': {"Medicine_Name": "Ranitidine", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Headache, constipation", 
+                          "Prescription_Required": "No"},
+                    's': {"Medicine_Name": "Sertraline", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Nausea, insomnia", 
+                          "Prescription_Required": "Yes"},
+                    't': {"Medicine_Name": "Tramadol", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Dizziness, nausea", 
+                          "Prescription_Required": "Yes"},
+                    'u': {"Medicine_Name": "Ursodeoxycholic acid", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Diarrhea, itching", 
+                          "Prescription_Required": "Yes"},
+                    'v': {"Medicine_Name": "Venlafaxine", "Medicine_Type": "Capsule", 
+                          "Common_Side_Effects": "Nausea, headache", 
+                          "Prescription_Required": "Yes"},
+                    'w': {"Medicine_Name": "Warfarin", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Increased risk of bleeding, bruising", 
+                          "Prescription_Required": "Yes"},
+                    'x': {"Medicine_Name": "Xanax", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Drowsiness, confusion", 
+                          "Prescription_Required": "Yes"},
+                    'y': {"Medicine_Name": "Yasmin", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Nausea, breast tenderness", 
+                          "Prescription_Required": "Yes"},
+                    'z': {"Medicine_Name": "Zolpidem", "Medicine_Type": "Tablet", 
+                          "Common_Side_Effects": "Drowsiness, dizziness", 
+                          "Prescription_Required": "Yes"}
+                }
+                
+                # Default to a medicine based on first letter, or use paracetamol if not found
+                default_med = default_medicines.get(first_letter, default_medicines['p'])
+                medicine = {"Symptom": symptom.title(), **default_med}
+            else:
+                medicine = match.sample(1).iloc[0].to_dict()
         medicines.append(medicine)
     return {**state, "matched_medicines": medicines}
 
@@ -273,7 +554,7 @@ def generate_prescription_gemini(state: AgentState) -> AgentState:
 TODOS
     - DON'T EXPLAIN THE MEDICINE, JUST GIVE PRESCRIPTION
     - MAKE USE OF TECHNICAL WRITING RULE AND GIVE RESPONSE IN BULLET POINTS. etc.,
-    - DON'T INCOPERATE THE * IN YOUR RESPONSE LIKE YOU CREATE BOLD AND USE * DON'T INCOPERATE IT JUST SIMPLE RESPONSE.
+    - DON'T INCOPERATE THE * IN YOUR RESPONSE LIKE YOU CREATE BOLD AND USE Aesterick * DON'T INCOPERATE IT JUST SIMPLE RESPONSE.
     - GIVE MEDICINE NAME, THEN IT DOSAGE AND TIMES TO USE IN A DAY, TOTAL DAYS TO USE LIKE [Medicine name], [Dosage], [Times to use in a day], [Total days to use].
     - DON'T WRITE PRECAUTION
     - ALSO LIST WHAT TO INTAKE WITH MEDICINE LIKE WATER, FOOD, etc.
@@ -324,6 +605,8 @@ if __name__ == "__main__":
         "matched_medicines": [{} for _ in symptoms],
         "prescription": None,
         "question": None,
+        "input_type": None,
+        "options": [],
         "history": [],
         "parent_symptoms": [None] * len(symptoms),
         "extra_info": [{} for _ in symptoms],
@@ -346,10 +629,38 @@ if __name__ == "__main__":
             state = app.invoke(state)
             if state.get("question"):
                 print(f"\n🤔 Doctor AI (for symptom {idx+1}/{len(symptoms)} '{symptoms[idx]}'): " + state["question"])
-                answer = input("📝 Your answer: ").strip().lower()
+                
+                # Display options if available
+                options = state.get("options", [])
+                input_type = state.get("input_type", "text")
+                
+                if input_type == "checkbox" and options:
+                    print("Options:")
+                    for i, option in enumerate(options):
+                        print(f"  [{i+1}] {option}")
+                    answer = input("📝 Select option number: ").strip()
+                    try:
+                        answer_idx = int(answer) - 1
+                        if 0 <= answer_idx < len(options):
+                            answer = options[answer_idx]
+                        else:
+                            print("Invalid option, using text input instead.")
+                            answer = input("📝 Your answer: ").strip().lower()
+                    except ValueError:
+                        print("Invalid input, using text input instead.")
+                        answer = input("📝 Your answer: ").strip().lower()
+                else:
+                    answer = input("📝 Your answer: ").strip().lower()
                 
                 # Store the answer appropriately based on the question type
-                if "how long" in state["question"].lower() or "duration" in state["question"].lower():
+                if state["question"] == "For your symptoms, please indicate:":
+                    # Combined follow-up for all symptoms
+                    for i in range(len(symptoms)):
+                        if "recently" in answer or "week" in answer:
+                            state["extra_info"][i]["duration"] = answer
+                        if "mild" in answer or "moderate" in answer or "severe" in answer:
+                            state["extra_info"][i]["severity_frequency"] = answer
+                elif "how long" in state["question"].lower() or "duration" in state["question"].lower():
                     state["extra_info"][idx]["duration"] = answer
                 elif "severity" in state["question"].lower():
                     state["extra_info"][idx]["severity"] = answer
@@ -371,6 +682,8 @@ if __name__ == "__main__":
                 state["history"].append(state["question"])
                 state["history"].append(answer)
                 state["question"] = None
+                state["input_type"] = None
+                state["options"] = []
             if state["clarified"][idx]:
                 state["current_index"] += 1
             continue

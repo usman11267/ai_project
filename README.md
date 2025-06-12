@@ -16,7 +16,7 @@ An AI-powered application that assists patients by providing medicine suggestion
 - LangGraph
 - Gemini/OpenAI API
 - Flask / FastAPI (for backend API)
-- react for fronted
+- React for frontend
 - Git & GitHub
 
 ## 📦 Installation
@@ -45,9 +45,18 @@ An AI-powered application that assists patients by providing medicine suggestion
    VECTOR_DB_API_KEY=your_vector_db_key_here
    ```
 
-5. **Run the App**
+## 🚀 Running the Application
+
+1. **Start the Backend**
    ```bash
-   python app.py
+   python -m uvicorn main:app --reload
+   ```
+
+2. **Start the Frontend**
+   ```bash
+   cd frontend
+   npm install
+   npm start
    ```
 
 ## 🧪 Example Usage
@@ -62,7 +71,7 @@ An AI-powered application that assists patients by providing medicine suggestion
   }
   ```
 
-
+## 🤝 Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ---
